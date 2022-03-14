@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
 
-app.get('/gps', (req, res)=>{
+app.get('/gps', (req, res) => {
     res.json(
         {
             lat: lat,
@@ -29,16 +29,16 @@ app.get('/gps', (req, res)=>{
     );
 })
 
-server.listen(PORT, function() {
+server.listen(PORT, function () {
     console.log(`Servidor iniciado en el puerto ${PORT}`);
 
     const mysql = require('mysql');
 
     var con = mysql.createConnection({
-    host: process.env.DB_HOST,  
-    user: process.env.DB_USER,  
-    password: process.env.DB_PASSWORD, 
-    database: process.env.DB_NAME,
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
     });
 
     con.connect((err) => {
@@ -46,23 +46,23 @@ server.listen(PORT, function() {
             console.error('error conecting: ' + err.stack);
             return;
         }
-        else{
-            console.log("Connected to database.");            
+        else {
+            console.log("Connected to database.");
         }
     });
 
     console.log('Sniffer on port', PORT_UDP);
 
-    socket.on('message',(message)=>{        
-        console.log('message: '+ message)
-        lat = String(message).substr(9,10)
-        lon = String(message).substr(30,11)
-        time = String(message).substr(53,13)
-        date = String(message).substr(41,10)
+    socket.on('message', (message) => {
+        console.log('message: ' + message)
+        lat = String(message).substr(9, 10)
+        lon = String(message).substr(30, 11)
+        time = String(message).substr(53, 13)
+        date = String(message).substr(41, 10)
 
         var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
-        var values = [ [lat,lon,date,time], ];
-        con.query(mysql, [values], function (err)  {
+        var values = [[lat, lon, date, time],];
+        con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
         });
