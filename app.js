@@ -3,6 +3,7 @@ const app = express();
 const dgram = require('dgram');
 const path = require("path");
 const socket = dgram.createSocket('udp4');
+const config = require('dotenv').config();
 var port = 80;
 
 
@@ -20,10 +21,10 @@ const mysql = require('mysql')
 var data;
 
 var con = mysql.createConnection({
-  host: "localhost",  
-  user: "root",  
-  password: "password", 
-  database: "prueba"
+  host: process.env.DB_HOST,  
+  user: process.env.DB_USER,  
+  password: process.env.DB_PASSWORD, 
+  database: process.env.DB_NAME,
 })
 
 con.connect((err) => {
