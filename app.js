@@ -15,7 +15,8 @@ var time = ''
 
 
 // settings
-const server = app.listen(port);
+const server = app.listen(3300);
+console.log('Server on port', app.get('port'));
 
 const mysql = require('mysql')
 var data;
@@ -49,7 +50,7 @@ function main (){
       
 
       const server = app.listen(app.get('port'), () =>{
-        console.log('Server on port', port);
+        console.log('Sniffer on port', port);
         socket.on('message',(message)=>{
           
             console.log('message: '+ message)
