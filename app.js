@@ -15,7 +15,7 @@ var time = ''
 
 
 // settings
-const server = app.listen(3300);
+const server = app.listen(port);
 console.log('Server on port', app.get('port'));
 
 const mysql = require('mysql')
