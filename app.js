@@ -13,20 +13,14 @@ var lat = '';
 var lon = '';
 var date = '';
 var time = '';
+var coords;
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
 
 app.get('/gps', (req, res) => {
-    res.json(
-        {
-            lat: lat,
-            lon: lon,
-            date: date,
-            time: time
-        }
-    );
+    res.json(coords);
 })
 
 server.listen(PORT, function () {
@@ -60,13 +54,21 @@ server.listen(PORT, function () {
         time = String(message).substr(53, 13)
         date = String(message).substr(41, 10)
 
+        
+        coords = {
+            lat: lat,
+            lon: lon,
+            date: date,
+            time: time
+        }
+
         var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
         var values = [[lat, lon, date, time],];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
         });
-        
+
     });
 
     socket.on('error', (err) => {
