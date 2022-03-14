@@ -68,7 +68,7 @@ function main (){
             });
         });
        
-        socket.bind(3020)  
+        socket.bind(port)  
     });
 
     app.get('/gps', (req, res)=>{
