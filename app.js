@@ -30,7 +30,7 @@ app.get('/gps', (req, res)=>{
 })
 
 server.listen(PORT, function() {
-    console.log(`Servidor iniciado en el puerto ${PORT}`.green);
+    console.log(`Servidor iniciado en el puerto ${PORT}`);
 
     const mysql = require('mysql');
 
@@ -47,7 +47,7 @@ server.listen(PORT, function() {
             return;
         }
         else{
-            console.log("Connected to Data base");            
+            console.log("Connected to database.");            
         }
     });
 
