@@ -4,7 +4,7 @@ const dgram = require('dgram');
 const path = require("path");
 const socket = dgram.createSocket('udp4');
 const config = require('dotenv').config();
-var port = 80;
+var port = 5500;
 
 
 
