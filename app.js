@@ -6,7 +6,7 @@ const socket = dgram.createSocket('udp4');
 const config = require('dotenv').config();
 var port = process.env.PORT;
 
-
+var portUdp=3020;
 
 var lat = ''
 var lon = ''
@@ -16,7 +16,8 @@ var time = ''
 
 // settings
 const server = app.listen(port);
-console.log('Server on port', app.get('port'));
+app.listen(port,()=>{console.log('servidor web en el puerto',port)});
+console.log('Server on port  ccc',port);
 
 const mysql = require('mysql')
 var data;
@@ -42,6 +43,7 @@ con.connect((err) => {
 
 //listening the server
 function main (){
+    console.log('aqui va bien');
     //routes
     app.get("/", (req, res) => {
   
@@ -49,8 +51,8 @@ function main (){
       });
       
 
-      const server = app.listen(app.get('port'), () =>{
-        console.log('Sniffer on port', port);
+      
+        console.log('Sniffer on port', portUdp);
         socket.on('message',(message)=>{
           
             console.log('message: '+ message)
@@ -67,9 +69,7 @@ function main (){
               if (err) throw err;
               console.log("1 record inserted");
             });
-        });
-       
-        socket.bind(3020)  
+        socket.bind(portUdp)  
     });
 
     app.get('/gps', (req, res)=>{
@@ -82,7 +82,8 @@ function main (){
             }
         );
     })
-
+    
     }
+
 main();
 
