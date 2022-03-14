@@ -1,89 +1,80 @@
 const express = require('express')
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
 const dgram = require('dgram');
 const path = require("path");
 const socket = dgram.createSocket('udp4');
 const config = require('dotenv').config();
-var port = process.env.PORT;
 
-var portUdp=3020;
+var PORT = process.env.PORT;
+var PORT_UDP = process.env.PORT_UDP;
+var lat = '';
+var lon = '';
+var date = '';
+var time = '';
 
-var lat = ''
-var lon = ''
-var date = ''
-var time = ''
-
-
-// settings
-const server = app.listen(port);
-app.listen(port,()=>{console.log('servidor web en el puerto',port)});
-console.log('Server on port  ccc',port);
-
-const mysql = require('mysql')
-var data;
-
-var con = mysql.createConnection({
-  host: process.env.DB_HOST,  
-  user: process.env.DB_USER,  
-  password: process.env.DB_PASSWORD, 
-  database: process.env.DB_NAME,
-})
-
-con.connect((err) => {
-    if (err) {
-        console.error('error conecting: ' + err.stack);
-        return;
-    }
-    else{
-        console.log("Connected to Data base")
-        
-    }
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname + "/index.html"));
 });
 
+app.get('/gps', (req, res)=>{
+    res.json(
+        {
+            lat: lat,
+            lon: lon,
+            date: date,
+            time: time
+        }
+    );
+})
 
-//listening the server
-function main (){
-    console.log('aqui va bien');
-    //routes
-    app.get("/", (req, res) => {
-  
-        res.sendFile(path.join(__dirname + "/index.html"));
-      });
-      
+server.listen(PORT, function() {
+    console.log(`Servidor iniciado en el puerto ${PORT}`.green);
 
-      
-        console.log('Sniffer on port', portUdp);
-        socket.on('message',(message)=>{
-          
-            console.log('message: '+ message)
-            lat = String(message).substr(9,10)
-            lon = String(message).substr(30,11)
-            time = String(message).substr(53,13)
-            date = String(message).substr(41,10)
+    const mysql = require('mysql');
 
-            var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
-            var values = [
-                [lat,lon,date,time],
-              ];
-              con.query(mysql, [values], function (err)  {
-              if (err) throw err;
-              console.log("1 record inserted");
-            });
-        socket.bind(portUdp)  
+    var con = mysql.createConnection({
+    host: process.env.DB_HOST,  
+    user: process.env.DB_USER,  
+    password: process.env.DB_PASSWORD, 
+    database: process.env.DB_NAME,
     });
 
-    app.get('/gps', (req, res)=>{
-        res.json(
-            {
-                lat: lat,
-                lon: lon,
-                date: date,
-                time: time
-            }
-        );
-    })
-    
-    }
+    con.connect((err) => {
+        if (err) {
+            console.error('error conecting: ' + err.stack);
+            return;
+        }
+        else{
+            console.log("Connected to Data base");            
+        }
+    });
 
-main();
+    console.log('Sniffer on port', portUdp);
 
+    socket.on('message',(message)=>{        
+        console.log('message: '+ message)
+        lat = String(message).substr(9,10)
+        lon = String(message).substr(30,11)
+        time = String(message).substr(53,13)
+        date = String(message).substr(41,10)
+
+        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
+        var values = [ [lat,lon,date,time], ];
+        con.query(mysql, [values], function (err)  {
+            if (err) throw err;
+            console.log("1 record inserted");
+        });
+    });
+
+    socket.on('error', (err) => {
+        console.log(`server error:\n${err.stack}`);
+        udp_server.close();
+    });
+
+    socket.bind({
+        addres: process.env.HOST,
+        port: process.env.PORT_UDP
+    });
+});
