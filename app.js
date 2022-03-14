@@ -51,7 +51,7 @@ server.listen(PORT, function() {
         }
     });
 
-    console.log('Sniffer on port', portUdp);
+    console.log('Sniffer on port', PORT_UDP);
 
     socket.on('message',(message)=>{        
         console.log('message: '+ message)
@@ -75,6 +75,6 @@ server.listen(PORT, function() {
 
     socket.bind({
         addres: process.env.HOST,
-        port: process.env.PORT_UDP
+        port: PORT_UDP
     });
 });
