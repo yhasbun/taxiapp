@@ -66,6 +66,7 @@ server.listen(PORT, function () {
             if (err) throw err;
             console.log("1 record inserted");
         });
+        
     });
 
     socket.on('error', (err) => {

@@ -69,7 +69,7 @@
 	     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         async function getGPS() {
-            response = await fetch("http://taxilocation.hopto.org/gps");
+            response = await fetch("http://taxiapp.ddns.net:3000/gps");
             coordinates = await response.json();
             document.getElementById("LatID").textContent = coordinates.lat;
             document.getElementById("LongID").textContent = coordinates.lon;
