@@ -24,6 +24,7 @@ app.get('/gps', (req, res) => {
     res.json(coords);
 })
 
+//Esto es un comentario echo por Hollman
 server.listen(PORT, function () {
     console.log(`Servidor iniciado en el puerto ${PORT}`);
 
