@@ -16,6 +16,10 @@ var date = '';
 var time = '';
 var coords;
 
+app.use(express.static(__dirname + '/public/'));
+app.use(express.json())
+app.use(express.urlencoded({extended: false}));
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
