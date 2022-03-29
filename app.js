@@ -51,10 +51,10 @@ server.listen(PORT, function () {
     socket.on('message', (message) => {
         console.log('message splited: ' + String(message).split('\n'))
         const msg_values = String(message).split('\n');
-        lat = msg_values[0].split(':')[1].strip()
-        lon = msg_values[1].split(':')[1].strip()
-        date = msg_values[2].split(',')[0].strip()
-        time = msg_values[2].split(',')[1].strip()
+        lat = msg_values[0].split(':')[1].trim()
+        lon = msg_values[1].split(':')[1].trim()
+        date = msg_values[2].split(',')[0].trim()
+        time = msg_values[2].split(',')[1].trim()
         
         coords = {
             lat: lat,
