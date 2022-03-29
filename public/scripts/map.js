@@ -23,8 +23,7 @@ async function getGPS() {
     map.removeLayer(marker);
     marker = L.marker(latlng).addTo(map);
     coords_records.push(latlng);
-    polyline.removeFrom(map);
-    polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
-    polyline.setLatLngs(coord_taxi1);}
+    polyline.setLatLngs(coords_records);
+}
 
 setInterval(getGPS, 5000);
