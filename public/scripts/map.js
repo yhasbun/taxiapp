@@ -1,7 +1,7 @@
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(13);
 
-let marker = L.marker([]).addTo(map);
+let marker;
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
 
@@ -20,9 +20,11 @@ async function getGPS() {
     document.getElementById("HoraID").textContent = coordinates.time;
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
-    marker.setLatLng(latlng);
+    map.removeLayer(marker);
+    marker = L.marker(latlng).addTo(map);
     coords_records.push(latlng);
-    polyline.setLatLngs(coords_records);
-}
+    polyline.removeFrom(map);
+    polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+    polyline.setLatLngs(coord_taxi1);}
 
 setInterval(getGPS, 5000);
