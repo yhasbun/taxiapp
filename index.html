@@ -25,14 +25,52 @@
             text-align: left;
             margin-bottom: 40px;
         }
-        #MapID { height: 500px; }
+        *{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+
+  nav{
+    background: rgba(250, 247, 247, 0.8);
+    height: 80px;
+    width: 100%;
+  }
+  nav ul{
+    float: left;
+    margin-right: 20px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+  }
+  nav ul li a{
+    color: rgb(17, 17, 17);
+    font-size: 17px;
+    font-weight: bold;
+    padding: 30px 13px; 
+    text-transform: uppercase;
+  }
+  a.menulink.active,a.menulink:hover{
+    background: rgb(19, 19, 19); 
+    color: rgb(255, 255, 255);
+    transition: .2s;
+    border-bottom:4px solid rgb(0, 130, 230);
+
+  }
+  #MapID { height: 450px; } 
       </style>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""/>
-      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-       crossorigin=""></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+ integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+
+</head>
 
 </head>
 
@@ -40,7 +78,15 @@
     <div>
         <header style="text-align: center"><b><i>Localizador</b></i></header>
       </div>
-  
+  <nav>
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+          <li><a class="menulink" href="#" style="background: rgb(19, 19, 19); color: rgb(255, 255, 255); border-bottom:4px solid rgb(0, 130, 230);">Inicio</a></li>
+          <li><a class="menulink" href="../historicos/">Históricos</a></li>
+      </ul>
+    </nav>
+	
     <div>
         <label>Latitud</label>
         <label id="LatID"style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
