@@ -20,11 +20,15 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
 
+ app.get("/historicos", function (req, res) {
+        res.sendFile(path.join(__dirname + "/historicos.html"));
+      });
+
 app.get('/gps', (req, res) => {
     res.json(coords);
 })
 
-//Esto es un comentario echo por Hollman
+
 server.listen(PORT, function () {
     console.log(`Servidor iniciado en el puerto ${PORT}`);
 
@@ -83,3 +87,10 @@ server.listen(PORT, function () {
         port: PORT_UDP
     });
 });
+ app.post('/historicos', function (req, res) {
+        console.log("Historicos enviados")
+        console.log(req.body);
+        var histdata = req.body;
+        var tini = histdata.datainicio.toString();
+        var tfini = histdata.datafin.toString();
+        console.log(tini, tfini)
