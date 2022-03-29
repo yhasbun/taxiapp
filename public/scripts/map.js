@@ -1,6 +1,10 @@
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(13);
 
+let marker = L.marker([]).addTo(map);
+let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+const coords_records = [];
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -14,9 +18,11 @@ async function getGPS() {
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
     document.getElementById("HoraID").textContent = coordinates.time;
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)]
-    var marker = L.marker(latlng).addTo(map);
+    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
+    marker.setLatLng(latlng);
+    coords_records.push(latlng);
+    polyline.setLatLngs(coords_records);
 }
 
-setInterval(getGPS, 1000);
+setInterval(getGPS, 5000);
