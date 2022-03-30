@@ -173,14 +173,14 @@ crossorigin=""></script>
       datafin = document.getElementById('finalhist').value;
 
       const info = {
-        fecha_inicio: datainicio.split('T')[0].replace("-", "/"),
+        fecha_inicio: datainicio.split('T')[0].replaceAll("-", "/"),
         hora_inicio: datainicio.split('T')[1],
-        fecha_fin: datafin.split('T')[0].replace("-", "/"),
+        fecha_fin: datafin.split('T')[0].replaceAll("-", "/"),
         hora_fin: datafin.split('T')[1]
       };
 
       console.log(info);
-      
+
       const options = {
         method: 'POST',
         headers: {
