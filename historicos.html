@@ -149,7 +149,7 @@ crossorigin=""></script>
       datainicio = document.getElementById('inichist').value;
       datafin = document.getElementById('finalhist').value;
 
-      map.removeLayer([polyline]);
+      map.removeLayer([polyline, marker]);
       polyline.removeFrom(map);
 
       const info = {
