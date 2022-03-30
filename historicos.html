@@ -114,39 +114,6 @@ crossorigin=""></script>
 
 
   <div id="MapID"></div>
-    <script>
-
-    var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
-    map.setZoom(13);
-
-    let marker = L.marker({ lat: 11.008, lng: -74.809 }).addTo(map);
-    let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
-    const coords_records = [];
-
- L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  async function getGPS() {
-    response = await fetch("http://taxiapp.ddns.net:3900/gps");
-    coordinates = await response.json();
-    console.log(coordinates);
-    document.getElementById("LatID").textContent = coordinates.lat;
-    document.getElementById("LongID").textContent = coordinates.lon;
-    document.getElementById("FechaID").textContent = coordinates.date;
-    document.getElementById("HoraID").textContent = coordinates.time;
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);
-    map.removeLayer(marker);
-    marker = L.marker(latlng).addTo(map);
-    coords_records.push(latlng);
-    polyline.setLatLngs(coords_records);
-  }
-
-   setInterval(getGPS, 5000);
-  </script>
-
 
   <script>
    //Calendario
@@ -191,7 +158,30 @@ crossorigin=""></script>
 
       const content = await fetch('/historic', options);
       const data = await content.json();
-      console.log(data);
+      
+      const latlngs = [];
+      const datetime = [];
+
+      data.data.map(info => {
+        latlngs.push([info.latitud, info.longitud]);
+        datetime.push(`Fecha: ${info.fecha}\nHora: ${info.hora}`);
+      });
+
+      var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
+      map.setZoom(13);
+
+      let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      const coord = latlngs.reverse()[0];
+
+      map.setView(coord);
+      polyline.setLatLngs(latlngs);
+      let marker = L.marker(latlng).addTo(map);
     }
   </script>
 
