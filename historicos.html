@@ -189,9 +189,9 @@ crossorigin=""></script>
         body: JSON.stringify(info)
       };
 
-      const data = await fetch('/historic', options);
+      const content = await fetch('/historic', options);
+      const data = await content.json();
       console.log(data);
-      console.log(JSON.parse(data));
     }
   </script>
 
