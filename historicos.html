@@ -103,7 +103,10 @@ crossorigin=""></script>
       <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
       <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
 
+      <button type="button" onclick="enviarhist()">Buscar</button>
+
       <div class="switch-container;" style="text-align: center; margin-top: 5px;">
+
       </div>
     </div>
   </div>
@@ -165,7 +168,7 @@ crossorigin=""></script>
 
     
   <script>
-     async function enviarhist() {
+    async function enviarhist() {
       datainicio = document.getElementById('inichist').value;
       datafin = document.getElementById('finalhist').value;
       datainicio = new Date(datainicio).valueOf();
