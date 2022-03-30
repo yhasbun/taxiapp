@@ -180,7 +180,8 @@ crossorigin=""></script>
       const coord = latlngs.reverse()[0];
 
       map.setView(coord);
-      polyline.setLatLngs(latlngs);
+      polyline.removeFrom(map);
+      polyline = L.polyline(latlngs, {color: '#41b611', smoothFactor:3}).addTo(map);
       let marker = L.marker(latlng).addTo(map);
     }
   </script>
