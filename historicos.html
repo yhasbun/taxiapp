@@ -188,8 +188,9 @@ crossorigin=""></script>
         },
         body: JSON.stringify(info)
       };
-      
-      await fetch('/historic', options);
+
+      const data = await fetch('/historic', options);
+      console.log(data);
     }
   </script>
 
