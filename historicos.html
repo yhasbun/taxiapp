@@ -144,6 +144,7 @@ crossorigin=""></script>
     map.setZoom(13);
 
     let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+    let marker = L.marker({ lat: 11.008, lng: -74.809 }).addTo(map);
 
     async function enviarhist() {
       datainicio = document.getElementById('inichist').value;
@@ -191,7 +192,7 @@ crossorigin=""></script>
 
       map.setView(coord);
       polyline = L.polyline(latlngs, {color: '#41b611', smoothFactor:3}).addTo(map);
-      let marker = L.marker(coord).addTo(map);
+      marker = L.marker(coord).addTo(map);
 
       let location = document.querySelector('#ubicacion');    
       location.setAttribute("max", latlngs.length - 1);
