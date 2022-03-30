@@ -66,7 +66,7 @@ app.post('/historic', (req, res) => {
             return;
         }
         console.log("Datos recibidos con éxito.");
-        connection.end();
+        con.end();
         console.log(info);
     });
 });
