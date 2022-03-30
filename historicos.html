@@ -75,7 +75,7 @@ crossorigin=""></script>
 <body>
 
 
-<div>
+ <div>
     <header style="text-align: center"><b><i>Localizador</b></i></header>
   </div>
 
@@ -89,7 +89,7 @@ crossorigin=""></script>
       <li><a class="menulink" href="../historicos/"style="background: rgb(19, 19, 19); color: rgb(255, 255, 255); border-bottom:4px solid rgb(0, 130, 230);">Historicos</a></li>
   </ul>
 
-</nav>
+ </nav>
 
   <div class="wrapper">
 
@@ -112,9 +112,10 @@ crossorigin=""></script>
 
 
   <div id="MapID" > </div>
+
   <script> src="scripts/map.js" </script>
 
-<script>
+ <script>
    //Calendario
 
      window.addEventListener('load', function () {
@@ -133,10 +134,10 @@ crossorigin=""></script>
       });
 
     });
-</script>
+ </script>
 
     
-<script>
+  <script>
 
      async function enviarhist() {
       datainicio = document.getElementById('inichist').value;
@@ -158,7 +159,7 @@ crossorigin=""></script>
       await fetch('/historic', options);
     }
 
-</script>
+  </script>
 
 </body>
 
