@@ -6,6 +6,7 @@ const dgram = require('dgram');
 const path = require("path");
 const socket = dgram.createSocket('udp4');
 const config = require('dotenv').config();
+const mysql = require('mysql');
 
 
 var PORT = process.env.PORT;
@@ -32,10 +33,46 @@ app.get('/gps', (req, res) => {
     res.json(coords);
 })
 
+app.post('historic/', (req, res) => {
+    console.log(req.body);
+    const { fecha_inicio, hora_inicio, fecha_fin, hora_fin } = req.body;
+
+    const sql_query = `SELECT * 
+    FROM datos 
+    WHERE 
+    str_to_date(concat(fecha, ' ', hora), '%Y-%m-%d %H:%i:%s') >= str_to_date(concat('${fecha_inicio}', ' ', '${hora_inicio}'),'%Y-%m-%d %H:%i:%s') 
+    AND str_to_date(concat(fecha, ' ', hora),'%Y-%m-%d %H:%i:%s') <= str_to_date(concat('${fecha_fin}', ' ', '${hora_fin}'),'%Y-%m-%d %H:%i:%s')`
+
+    var con = mysql.createConnection({
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
+    });
+
+    con.connect((err) => {
+        if (err) {
+            console.error('error conecting: ' + err.stack);
+            return;
+        }
+        else {
+            console.log("Connected to database.");
+        }
+    });
+
+    con.query(sql_query, (err, info) => {
+        if (err) {
+            console.log("No se pudo ejecutar el query.");
+            return;
+        }
+        console.log("Datos recibidos con éxito.");
+        connection.end();
+        console.log(info);
+    });
+});
+
 server.listen(PORT, function () {
     console.log(`Servidor iniciado en el puerto ${PORT}`);
-
-    const mysql = require('mysql');
 
     var con = mysql.createConnection({
         host: process.env.DB_HOST,
