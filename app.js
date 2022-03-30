@@ -33,7 +33,7 @@ app.get('/gps', (req, res) => {
     res.json(coords);
 })
 
-app.post('historic/', (req, res) => {
+app.post('/historic', (req, res) => {
     console.log(req.body);
     const { fecha_inicio, hora_inicio, fecha_fin, hora_fin } = req.body;
 
