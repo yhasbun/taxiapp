@@ -171,9 +171,16 @@ crossorigin=""></script>
     async function enviarhist() {
       datainicio = document.getElementById('inichist').value;
       datafin = document.getElementById('finalhist').value;
-      console.log('datainicio: ' + datainicio);
-      console.log('datafina: ' + datafin);
-      const info = { datainicio, datafin };
+
+      const info = {
+        fecha_inicio: datainicio.split('T')[0].replace("-", "/"),
+        hora_inicio: datainicio.split('T')[1],
+        fecha_fin: datafin.split('T')[0].replace("-", "/"),
+        hora_fin: datafin.split('T')[1]
+      };
+
+      console.log(info);
+      
       const options = {
         method: 'POST',
         headers: {
