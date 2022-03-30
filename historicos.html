@@ -191,22 +191,22 @@ crossorigin=""></script>
 
       map.setView(coord);
       polyline = L.polyline(latlngs, {color: '#41b611', smoothFactor:3}).addTo(map);
-      let marker = L.marker(latlng).addTo(map);
+      let marker = L.marker(coord).addTo(map);
 
-      let $location = document.querySelector('#ubicacion');    
-      $avanzar.setAttribute("max", latlngs.length - 1);
+      let location = document.querySelector('#ubicacion');    
+      location.setAttribute("max", latlngs.length - 1);
 
       let index = 0;
-      let label_marker;
 
-      $location.addEventListener('change', ()=> {
+      location.addEventListener('change', () => {
 
-          if (label_marker !== undefined) {
-              map.removeLayer(label_marker);
+          if (marker !== undefined) {
+              map.removeLayer(marker);
           };
 
-          index = $location.value;
-          label_marker = L.marker(latlngs[index]).addTo(map).bindPopup(datetime[index]).openPopup();
+          index = location.value;
+          map.setView(latlngs[index]);
+          marker = L.marker(latlngs[index]).addTo(map).bindPopup(datetime[index]).openPopup();
       });
     }
   </script>
