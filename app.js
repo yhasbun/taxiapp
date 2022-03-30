@@ -23,6 +23,9 @@ app.use(express.urlencoded({extended: false}));
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
+app.get("/historicos", function (req, res) {
+    res.sendFile(path.join(__dirname + "/historicos.html"));
+  });
 
 app.get('/gps', (req, res) => {
     res.json(coords);
