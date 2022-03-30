@@ -144,13 +144,18 @@ crossorigin=""></script>
     map.setZoom(13);
 
     let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
-    let marker = L.marker({ lat: 11.008, lng: -74.809 }).addTo(map);
+    let marker;
 
     async function enviarhist() {
       datainicio = document.getElementById('inichist').value;
       datafin = document.getElementById('finalhist').value;
 
-      map.removeLayer([polyline, marker]);
+      map.removeLayer([polyline]);
+
+      if (marker !== undefined) {
+          map.removeLayer(marker);
+      };
+
       polyline.removeFrom(map);
 
       const info = {
