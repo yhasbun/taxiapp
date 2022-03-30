@@ -97,13 +97,12 @@ crossorigin=""></script>
       <h1 style="text-align: center; padding-top: 15px;">Historicos</h1>
      
       <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="inichist">Inicio:</label>
-      <input class="inlineclass" style="text-align: center;" type="datetime-local" id="inichist" onchange="changehist()" name="InitialHistoric" value="2022-04-30T00:00"
-        min="2022-04-30T00:00" max="2023-04-01T00:00">
+      <input class="inlineclass" style="text-align: center;" type="datetime-local" id="inichist" onchange="changehist()" name="InitialHistoric" value="2022-03-30T00:00" min="2022-03-20T00:00" max="2023-04-01T00:00">
       <div></div>
+
       <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
-      <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-05-01T00:00"
-        min="2022-05-30T00:00" max="2023-04-01T00:00">
-      <div></div>
+      <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
+
       <div class="switch-container;" style="text-align: center; margin-top: 5px;">
       </div>
     </div>
@@ -111,7 +110,7 @@ crossorigin=""></script>
 
 
 
-   <div id="MapID"></div>
+  <div id="MapID"></div>
     <script>
 
     var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
@@ -143,33 +142,29 @@ crossorigin=""></script>
   }
 
    setInterval(getGPS, 5000);
-    </script>
+  </script>
 
 
- <script>
+  <script>
    //Calendario
-
-     window.addEventListener('load', function () {
-      datainicio = document.getElementById('inichist')
+    window.addEventListener('load', function () {
+      datainicio = document.getElementById('inichist');
       datainicio.addEventListener('change', function () { 
         if (document.getElementById('finalhist').value < this.value) { 
-        document.getElementById('finalhist').value = this.value;
+          document.getElementById('finalhist').value = this.value;
         }
-
       });
-      datafin = document.getElementById('finalhist')
+      datafin = document.getElementById('finalhist');
       datafin.addEventListener('change', function () {
         if (document.getElementById('inichist').value > this.value) {
           this.value = document.getElementById('inichist').value;
         }
       });
-
     });
- </script>
+  </script>
 
     
   <script>
-
      async function enviarhist() {
       datainicio = document.getElementById('inichist').value;
       datafin = document.getElementById('finalhist').value;
@@ -177,8 +172,8 @@ crossorigin=""></script>
       datafin = new Date(datafin).valueOf();
       datainicio = datainicio.toString();
       datafin = datafin.toString();
-      console.log('datainicio= ' + datainicio);
-      console.log('datafina= ' + datafin);
+      console.log('datainicio: ' + datainicio);
+      console.log('datafina: ' + datafin);
       const info = { datainicio, datafin };
       const options = {
         method: 'POST',
@@ -189,7 +184,6 @@ crossorigin=""></script>
       };
       await fetch('/historic', options);
     }
-
   </script>
 
 </body>
