@@ -11,7 +11,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-    response = await fetch("http://taxiapp.ddns.net:3900/gps");
+    response = await fetch("http://18.119.17.216:3900/gps");
     coordinates = await response.json();
     console.log(coordinates);
     document.getElementById("LatID").textContent = coordinates.lat;
