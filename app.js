@@ -94,6 +94,7 @@ server.listen(PORT, function () {
     console.log('Sniffer on port', PORT_UDP);
 
     socket.on('message', (message) => {
+        
         console.log('message splited: ' + String(message).split('\n'))
         const msg_values = String(message).split('\n');
         lat = msg_values[0].split(':')[1].trim()

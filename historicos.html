@@ -206,13 +206,13 @@ crossorigin=""></script>
 
       location.addEventListener('change', () => {
 
-          if (marker !== undefined) {
-              map.removeLayer(marker);
-          };
+        if (marker !== undefined) {
+            map.removeLayer(marker);
+        };
 
-          index = location.value;
-          map.setView(latlngs[index]);
-          marker = L.marker(latlngs[index]).addTo(map).bindPopup(datetime[index]).openPopup();
+        index = location.value;
+        map.setView(latlngs[index]);
+        marker = L.marker(latlngs[index]).addTo(map).bindPopup(datetime[index]).openPopup();
       });
     }
   </script>
