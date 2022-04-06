@@ -60,6 +60,12 @@ transition: .2s;
 border-bottom:4px solid rgb(0, 130, 230);
 
 }
+    button.centrado {
+        width: 110px; /* Para que no se rompa en dos líneas, y lo translade tal cual. */
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-top: 2%;
+      }
 #MapID { height: 450px; }
   </style>
 
@@ -103,7 +109,9 @@ crossorigin=""></script>
       <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
       <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
 
-      <button type="button" onclick="enviarhist()">Buscar</button>
+     <div class="button">
+        <button class="centrado"onclick="enviarhist()">Buscar</button>
+      </div>
 
       <div>
         <input type="range" id="ubicacion" min="0" value="0" step="1"> 
