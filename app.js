@@ -17,7 +17,7 @@ var date = '';
 var time = '';
 var coords;
 
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname ));
 app.use(express.json())
 app.use(express.urlencoded({extended: false}));
 
