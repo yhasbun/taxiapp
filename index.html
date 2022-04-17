@@ -70,15 +70,7 @@ transition: transform(calc(0.3s/2));
 .nav-main__btn-collapse{
 display: none;
 }
-.icon-nav:first-child{
-transform: translateY(0.5em) rotate(45deg);
-}
-.icon-nav:nth-of-type(2){
-transform: scale(0);
-}
-.icon-nav:last-child{
-transform: translateY(-0.5em) rotate(-45deg);
-}
+
 .nav-main__btn-collapse:checked + .nav-main__btn-collapse-icon .icon-nav:first-child{
 transform: translateY(0.5em) rotate(45deg);
 }
@@ -137,7 +129,7 @@ color:white;
 transform: scaleY(0);
 transition: transform(0.3s);
 transform-origin: top;
-z-index:500;
+
 }
 .nav-main__link-item{
   margin-bottom: 2rem;
@@ -151,6 +143,7 @@ z-index:500;
 }
 .nav-main_title{
   font-family: Arial, Helvetica, Sans-serif;
+  transform: translateX(125%);
   color: white;
   font-size: 30px;
   text-align: center; 
@@ -158,6 +151,33 @@ z-index:500;
   z-index: 1;
 }
 #MapID { height: 580px; } 
+#MapID { z-index: -1; } 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+.btn{
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 3px solid 
+    #cf0404;
+    border-radius: 10px;
+}
+
+.btn:hover{
+    animation: pulsate 1s 
+    ease-in-out; 
+}
+
+@keyframes pulsate {
+
+    0%{
+        box-shadow: 
+        0 0 25px #cf0404,
+        0 0 50px #740101;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -213,5 +233,58 @@ z-index:500;
 
 		
     </script>
-</body>
+
+<label id="valorescord">
+<div>
+    <label >Latitud</label>
+    <label id="LatID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
+  </div>
+
+
+  <div>
+    <label>Longitud</label>
+    <label id="LongID" style="border: 0.5px solid rgb(0, 0, 0); border-radius: 8px; width: 200px;">Sin datos</label>
+  </div>
+
+  <div>
+    <label>Fecha</label>
+    <label id="FechaID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
+  </div>
+
+  <div>
+      <label>Hora</label>
+      <label id="HoraID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
+  </div>
+</label>
+  <button class="btn" id= "btn" onclick="toggle();">Ocultar valores</button>
+</div>
+<script>
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", ()=>{
+
+    if(btn.innerText === "Visualizar valores"){
+        btn.innerText = "Ocultar Valores";
+    }else{
+        btn.innerText= "Visualizar valores";
+    }
+});
+</script>
+<script>
+  let toggle = () => {
+
+    let element = document.getElementById("valorescord");
+    let hidden = element.getAttribute("hidden");
+
+    if (hidden) {
+       element.removeAttribute("hidden");
+    } else {
+       element.setAttribute("hidden", "hidden");
+    }
+  }
+</script>
+
+</body> 
+
+<!-- box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; -->
 </html>
