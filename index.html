@@ -162,8 +162,8 @@ transform-origin: top;
     border: 3px solid 
     #cf0404;
     border-radius: 10px;
+    transform: translateY(-275%);
 }
-
 .btn:hover{
     animation: pulsate 1s 
     ease-in-out; 
@@ -177,6 +177,10 @@ transform-origin: top;
         0 0 50px #740101;
     }
 }
+#valorescord{position:relative;
+  top:-220px;
+  left:40px;
+  background-color: black;}
 
 </style>
 </head>
@@ -234,9 +238,9 @@ transform-origin: top;
 		
     </script>
 
-<label id="valorescord">
+<label id="valorescord" class="valorescord">
 <div>
-    <label >Latitud</label>
+    <label>Latitud</label>
     <label id="LatID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
   </div>
 
