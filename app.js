@@ -29,6 +29,9 @@ app.get("/historicos", function (req, res) {
     res.sendFile(path.join(__dirname + "/historicos.html"));
 });
 
+app.get("/buzon", function (req, res) {
+    res.sendFile(path.join(__dirname + "/buzon.html"));
+});
 app.get('/gps', (req, res) => {
     res.json(coords);
 })

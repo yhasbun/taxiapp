@@ -1,5 +1,5 @@
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
-map.setZoom(13);
+map.setZoom(15);
 
 let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map);
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
