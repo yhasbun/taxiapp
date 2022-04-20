@@ -46,7 +46,10 @@ body {
   align-items: center;
   position: relative;
   border-bottom: 4px solid #5e08d4;
+ 
 }
+
+
 .nav-main__btn-collapse-icon{
   width: 45px;
   height: 45px;
@@ -158,6 +161,13 @@ border-top: 0px;
 }
 #MapID { height: 580px; } 
 #MapID { z-index: -1; } 
+#logoimg{
+  height: 80px;
+  width: 100px;
+  transform:translateX(370px)
+
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 .btn{
@@ -205,9 +215,14 @@ border-top: 0px;
     <a href="https://github.com/yhasbun/taxiapp" target ="_blank" class="social-networks__links-item">
         <i class="fa-brands fa-github"></i>
     </a>
+    <a href="../buzon.html/" target ="blank" class="social-networks_links-item">
+      <i class="fa-solid fa-envelope"></i>
+  </a>
 </div>
 
 <div class="nav-main_title" align-items="margin-right"> <h1>Taxi Location</h1> </div>
+<a href="/" class="logo"><img src="/logo1.png" id="logoimg" /></a>
+   
 
 <div class="nav-main_menu">
     <a href="#" class="nav-main__link-item"> 
@@ -216,6 +231,26 @@ border-top: 0px;
     <a href="../historicos/" class="nav-main__link-item">
         <i class="fa-solid fa-calendar"></i>
         Históricos</a>
+        <div>
+          <label>Latitud:ㅤㅤ</label>
+          <label id="LatID" >Sin datos</label>
+        </div>
+      
+      
+        <div>
+          <label>Longitud:ㅤㅤ</label>
+          <label id="LongID"  >Sin datos</label>
+        </div>
+      
+        <div>
+          <label>Fecha:ㅤㅤ</label>
+          <label id="FechaID">Sin datos</label>
+        </div>
+      
+        <div>
+            <label>Hora:ㅤㅤ</label>
+            <label id="HoraID">Sin datos</label>
+        </div> 
     
 </div>
     </nav>
@@ -224,55 +259,6 @@ border-top: 0px;
       <script src="scripts/map.js"></script>
 
 
-<label id="valorescord" class="valorescord">
-<div>
-    <label>Latitud</label>
-    <label id="LatID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
-  </div>
-
-
-  <div>
-    <label>Longitud</label>
-    <label id="LongID" style="border: 0.5px solid rgb(0, 0, 0); border-radius: 8px; width: 200px;">Sin datos</label>
-  </div>
-
-  <div>
-    <label>Fecha</label>
-    <label id="FechaID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
-  </div>
-
-  <div>
-      <label>Hora</label>
-      <label id="HoraID" style="border: 0.5px solid black; border-radius: 8px; width: 200px;">Sin datos</label>
-  </div>
-</label>
-  <button class="btn" id= "btn" onclick="toggle();">Ocultar valores</button>
-</div>
-<script>
-const btn = document.getElementById("btn");
-
-btn.addEventListener("click", ()=>{
-
-    if(btn.innerText === "Visualizar valores"){
-        btn.innerText = "Ocultar Valores";
-    }else{
-        btn.innerText= "Visualizar valores";
-    }
-});
-</script>
-<script>
-  let toggle = () => {
-
-    let element = document.getElementById("valorescord");
-    let hidden = element.getAttribute("hidden");
-
-    if (hidden) {
-       element.removeAttribute("hidden");
-    } else {
-       element.setAttribute("hidden", "hidden");
-    }
-  }
-</script>
 
 </body> 
 
