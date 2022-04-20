@@ -136,7 +136,6 @@
   border: 3px solid #5e08d4;
   border-top: 0px;
   z-index: 1;
-  margin-left: 80px;
   }
   
   .nav-main__link-item{
@@ -249,58 +248,6 @@
   }
   </style>
 </head>
-<body>
-    <nav class = "nav-main">
-        <input type="checkbox" class="nav-main__btn-collapse" id="nav-main__checkbox">
-        <label for="nav-main__checkbox" class="nav-main__btn-collapse-icon">
-            <span class="icon-nav"></span>
-            <span class="icon-nav"></span>
-            <span class="icon-nav"></span>
-        </label>
-<div class="nav-main__btn-collapse-bg"></div>
-<div class="social-networks">
-    
-    <a href="https://github.com/yhasbun/taxiapp" target ="_blank" class="social-networks__links-item">
-        <i class="fa-brands fa-github"></i>
-    </a>
-    <a href="buzon.html" target ="_blank" class="social-networks__links-item">
-      <i class="fa-solid fa-envelope"></i>
-  </a>
-   
-</div>
-
-<div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location</h1> </div>
-<a href="/" class="logo"><img src="https://i.ibb.co/yRqhLHg/icon.jpg" id="logoimg" height="80px" /></a>
-
-<div class="nav-main_menu">
-    <a href="../" class="nav-main__link-item"> 
-        <i class="fa-solid fa-house"></i>
-        Inicio</a>
-    <a href="../historicos/" class="nav-main__link-item">
-        <i class="fa-solid fa-calendar"></i>
-        Históricos</a>
-    <a><div class="wrapper" id="wrapper">
-
-      <div class="inlineclass" style="text-align: center;" id="container">
-        <h1 style="text-align: center; padding-top: 15px;">Historicos</h1>
-       
-        <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="inichist">Inicio:</label>
-        <input class="inlineclass" style="text-align: center;" type="datetime-local" id="inichist" onchange="changehist()" name="InitialHistoric" value="2022-03-30T00:00" min="2022-03-20T00:00" max="2023-04-01T00:00">
-        <div></div>
-    
-        <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
-        <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
-    
-       <div class="button" id="busbut">
-          <button class="centrado"onclick="enviarhist()">Buscar</button>
-        </div>
-    
-       <label >Posicion: 
-        <div class="slider-wrapper">
-          <input type="range" id="ubicacion" min="0" value="0" step="1">
-        </div>
-      </label>
-          </div>
       </div>
     
     
