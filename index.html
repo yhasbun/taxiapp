@@ -168,7 +168,8 @@ border-top: 0px;
     border: 3px solid 
     #cf0404;
     border-radius: 10px;
-    transform: translateY(-275%);
+    transform: translateY(-100%);
+    position: absolute;
 }
 .btn:hover{
     animation: pulsate 1s 
@@ -183,10 +184,10 @@ border-top: 0px;
         0 0 50px #740101;
     }
 }
-#valorescord{position:relative;
-  top:-220px;
-  left:40px;
-  background-color: black;}
+#valorescord{position: absolute;
+  top: 75%;
+  padding-left: 20px;
+  }
 
 </style>
 </head>
@@ -219,30 +220,9 @@ border-top: 0px;
 </div>
     </nav>
 
+   <div id="MapID"></div>
+      <script src="scripts/map.js"></script>
 
-    <div id="MapID" > </div>
-     <script>
-        var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
-        map.setZoom(13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	     maxZoom: 19,
-	     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        async function getGPS() {
-            response = await fetch("http://18.117.186.216:3000/gps");
-            coordinates = await response.json();
-            document.getElementById("LatID").textContent = coordinates.lat;
-            document.getElementById("LongID").textContent = coordinates.lon;
-            document.getElementById("FechaID").textContent = coordinates.date;
-            document.getElementById("HoraID").textContent = coordinates.time;
-            const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)]
-            var marker = L.marker(latlng).addTo(map);
-            map.setView(latlng);
-          }
-        setInterval(getGPS, 1000);
-
-		
-    </script>
 
 <label id="valorescord" class="valorescord">
 <div>
