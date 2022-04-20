@@ -119,108 +119,102 @@
   top: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-.icon-nav{
-display: block;
-width: 60%;
-height: 2px;
-background-color: white;
-transition: transform 0.3s;
-}
-.nav-main__btn-collapse{
-display: none;
-}
-.icon-nav:first-child{
-transform: translateY(0.5em) rotate(45deg);
-}
-.icon-nav:nth-of-type(2){
-transform: scale(0);
-}
-.icon-nav:last-child{
-transform: translateY(-0.5em) rotate(-45deg);
-}
-.nav-main__btn-collapse:checked + .nav-main__btn-collapse-icon .icon-nav:first-child{
-transform: translateY(0.5em) rotate(45deg);
-}
-.nav-main__btn-collapse:checked + .nav-main__btn-collapse-icon .icon-nav:nth-of-type(2){
-transform: scale(0);
-}
-.nav-main__btn-collapse:checked + .nav-main__btn-collapse-icon .icon-nav:last-child{
-transform: translateY(-0.5em) rotate(-45deg);
-}
-.nav-main__btn-collapse-bg{
-height: 100%;
-width: var(--size-btn-collapse);
-background-color: rgb(116, 26, 3);
-position: absolute;
-left: 0;
-top: 0;
-transform: translateX(calc(var(--size-btn-collapse)/2 *-1));
-transition: transform 0.3s;
-}
-.nav-main__btn-collapse:checked ~ .nav-main__btn-collapse-bg{
-transform: translateX(0);
-}
-.social-networks{
-  background-color: rgb(1, 1, 10);
-  border-radius: 0 1rem 1rem 0;
-  padding: 0.4rem;
-  padding-left: 1.5rem;
-  color: white;
+  width: var(--size-btn-collapse);
+  height: calc(100hv-65px);
+  background-color: rgb(116, 26, 3);
+  padding: 2rem;
+  font-weight: 300;
   box-shadow: var(--box-shadow);
-  z-index: 1;
-  margin-left: -0.5rem;
-  transform: scaleX(0);
-  transition: transform 0.3s;
-  transform-origin: left;
-}
-.social-networks__links-item{
-  margin: 0 1rem;
-}
-
-.nav-main__btn-collapse:checked ~ .social-networks{
-  transform: scaleX(1);
-}
-.nav-main_menu{
-position: absolute;
-left: 0;
-top: 100%;
-display: flex;
-flex-direction: column;
-width: var(--size-btn-collapse);
-height: calc(100hv-65px);
-background-color: rgb(116, 26, 3);
-padding: 2rem;
-font-weight: 300;
-box-shadow: var(--box-shadow);
-color:white;
-transform: scaleY(0);
-transition: transform 0.3s;
-transform-origin: top;
-z-index:500;
-}
-.nav-main__link-item{
-  margin-bottom: 2rem;
-}
-.nav-main__link-item>.far{
-  display: inline-block;
-  margin-right: 0.6rem;
-}
-.nav-main__btn-collapse:checked~ .nav-main_menu{
-  transform: scaleY(1);
-}
-.nav-main_title{
-  font-family: Arial, Helvetica, Sans-serif;
-  color: white;
-  font-size: 30px;
-  text-align: center; 
-  align-items: center;
-  z-index: 1;
-}
-#MapID { height: 580px; } 
-</style>
+  color:white;
+  transform: scaleY(0);
+  transition: transform(0.3s);
+  transform-origin: top;
+  }
+  
+  .nav-main__link-item{
+    margin-bottom: 2rem;
+  }
+  .nav-main__link-item>.far{
+    display: inline-block;
+    margin-right: 0.6rem;
+  }
+  .nav-main__btn-collapse:checked~ .nav-main_menu{
+    transform: scaleY(1);
+  }
+  .nav-main_title{
+    font-family: Arial, Helvetica, Sans-serif;
+    transform: translateX(125%);
+    color: white;
+    font-size: 30px;
+    text-align: center; 
+    align-items: center;
+    z-index: 1;
+  }
+  #MapID { height: 580px; } 
+  #MapID { z-index: -1; } 
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+  .btn{
+      display: inline-block;
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 3px solid 
+      #cf0404;
+      border-radius: 10px;
+      transform: translateY(-100%);
+      position: absolute;
+  }
+  .btn:hover{
+      animation: pulsate 1s 
+      ease-in-out; 
+  }
+  
+  @keyframes pulsate {
+  
+      0%{
+          box-shadow: 
+          0 0 25px #cf0404,
+          0 0 50px #740101;
+      }
+  }
+  #valorescord{position: absolute;
+    top: 75%;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: justify;
+    }
+    .inlineclass {
+      align-items: center;
+    }
+    .btnhis{
+      display: inline-block;
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 3px solid 
+      #cf0404;
+      border-radius: 10px;
+      transform: translateY(900%);
+      position: absolute;
+      left: 0px;
+  }
+  .btnbtnhis:hover{
+      animation: pulsate 1s 
+      ease-in-out; 
+  }
+  
+  @keyframes pulsate {
+  
+      0%{
+          box-shadow: 
+          0 0 25px #cf0404,
+          0 0 50px #740101;
+      }
+  }
+  </style>
 </head>
 <body>
     <nav class = "nav-main">
@@ -236,9 +230,11 @@ z-index:500;
     <a href="https://github.com/yhasbun/taxiapp" target ="_blank" class="social-networks__links-item">
         <i class="fa-brands fa-github"></i>
     </a>
+   
 </div>
 
 <div class="nav-main_title" align-items="margin-right"> <h1>Taxi Location</h1> </div>
+<a href="/" class="logo"><img src="/logo1.png" id="logoimg" /></a>
 
 <div class="nav-main_menu">
     <a href="../" class="nav-main__link-item"> 
@@ -247,7 +243,57 @@ z-index:500;
     <a href="../historicos/" class="nav-main__link-item">
         <i class="fa-solid fa-calendar"></i>
         Históricos</a>
+    <a><div class="wrapper" id="wrapper">
+
+      <div class="inlineclass" style="text-align: center;" id="container">
+        <h1 style="text-align: center; padding-top: 15px;">Historicos</h1>
+       
+        <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="inichist">Inicio:</label>
+        <input class="inlineclass" style="text-align: center;" type="datetime-local" id="inichist" onchange="changehist()" name="InitialHistoric" value="2022-03-30T00:00" min="2022-03-20T00:00" max="2023-04-01T00:00">
+        <div></div>
     
+        <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
+        <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
+    
+       <div class="button">
+          <button class="centrado"onclick="enviarhist()">Buscar</button>
+        </div>
+    
+       <label >Posicion: 
+        <div class="slider-wrapper">
+          <input type="range" id="ubicacion" min="0" value="0" step="1">
+        </div>
+      </label>
+          </div>
+      </div>
+    </div>
+    <button class="btnhis" id= "btnhis" onclick="toggle();">Ocultar valores Historicos</button>
+  </div>
+  <script>
+  const btnhis = document.getElementById("btnhis");
+  
+  btnhis.addEventListener("click", ()=>{
+  
+      if(btnhis.innerText === "Visualizar valores Historicos"){
+        btnhis.innerText = "Ocultar Valores Historicos";
+      }else{
+        btnhis.innerText= "Visualizar valores Historicos";
+      }
+  });
+  </script>
+  <script>
+    let toggle = () => {
+  
+      let element = document.getElementById("wrapper");
+      let hidden = element.getAttribute("hidden");
+  
+      if (hidden) {
+         element.removeAttribute("hidden");
+      } else {
+         element.setAttribute("hidden", "hidden");
+      }
+    }
+  </script></a>
 </div>
     </nav>
 
@@ -274,30 +320,6 @@ z-index:500;
 
    
    </script>
-<div class="wrapper">
-
-  <div class="inlineclass" style="text-align: center;" id="container">
-    <h1 style="text-align: center; padding-top: 15px;">Historicos</h1>
-   
-    <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="inichist">Inicio:</label>
-    <input class="inlineclass" style="text-align: center;" type="datetime-local" id="inichist" onchange="changehist()" name="InitialHistoric" value="2022-03-30T00:00" min="2022-03-20T00:00" max="2023-04-01T00:00">
-    <div></div>
-
-    <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
-    <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
-
-   <div class="button">
-      <button class="centrado"onclick="enviarhist()">Buscar</button>
-    </div>
-
-   <label >Posicion: 
-    <div class="slider-wrapper">
-      <input type="range" id="ubicacion" min="0" value="0" step="1">
-    </div>
-  </label>
-      </div>
-  </div>
-</div>
 
 <script>
   //Calendario
