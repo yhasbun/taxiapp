@@ -19,6 +19,10 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
     <style>
       *,
   *::before,
@@ -158,7 +162,7 @@
     align-items: center;
     z-index: 1;
   }
-  #MapID { height: 580px; } 
+  #MapID { height: 500px; } 
   #logoimg{
     height: 80px;
     width: 100px;
@@ -246,7 +250,106 @@
           0 0 50px #740101;
       }
   }
+
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+  .btn_alert{
+  padding: 8px 16px;
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  color: white;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.alert{
+  background: #808dff;;
+  padding: 20px 40px;
+  min-width: 420px;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  border-radius: 4px;
+  border-left: 8px solid #5e08d4;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.alert.showAlert{
+  opacity: 1;
+  pointer-events: auto;
+} 
+.alert.show{
+  animation: show_slide 1s ease forwards;
+} 
+@keyframes show_slide {
+  0%{
+    transform: translateX(100%);
+  }
+  40%{
+    transform: translateX(-10%);
+  }
+  80%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-10px);
+  }
+}
+.alert.hide{
+  animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+  0%{
+    transform: translateX(-10px);
+  }
+  40%{
+    transform: translateX(0%);
+  }
+  80%{
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+.alert .fa-exclamation-circle{
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5e08d4 ;
+  font-size: 30px;
+}
+.alert .msg{
+  padding: 0 20px;
+  font-size: 18px;
+  color: #5e08d4 ;
+  transform: translateX(-500px);
+}
+.alert .close-btn{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #808dff;
+  padding: 20px 18px;
+  cursor: pointer;
+}
+.alert .close-btn:hover{
+  background: #808dff;
+}
+.alert .close-btn .fas{
+  color: #5e08d4 ;
+  font-size: 22px;
+  line-height: 40px;
+}
   </style>
+  
 </head>
 <body>
     <nav class = "nav-main">
@@ -270,6 +373,15 @@
 
 <div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location</h1> </div>
 <a href="/" class="logo"><img src="https://i.ibb.co/yRqhLHg/icon.jpg" id="logoimg" height="80px" /></a>
+
+<div class="alert hide">
+  <span class="fas fa-exclamation-circle"></span>
+  <span class="msg">Digite la fecha y hora en los Historicos para visualizar el mapa</span>
+   
+  <div class="close-btn">
+     <span class="fas fa-times"></span>
+  </div>
+</div>     
 
 <div class="nav-main_menu">
     <a href="../" class="nav-main__link-item"> 
@@ -301,8 +413,33 @@
       </label>
           </div>
       </div>
-    
-    
+
+    <div class="btn_alert" id="btn_alert"> 
+      <button>Mostrar Alertas</button>
+    </div>
+      
+    <script>
+
+      const onclick = function(){
+        $('.alert').addClass("show");
+        $('.alert').removeClass("hide");
+        $('.alert').addClass("showAlert");
+        setTimeout(function(){
+          $('.alert').removeClass("show");
+          $('.alert').addClass("hide");
+        },5000);
+      }      
+      $('button').click(onclick);
+      onclick();
+
+      const closeclick = function(){
+        $('.alert').removeClass("show");
+        $('.alert').addClass("hide");
+      }
+      $('.close-btn').click(closeclick);
+    </script>
+      
+
 </div>
     </nav>
 
@@ -405,6 +542,7 @@
      });
    }
  </script>
+
 
 </body>
 </html>
