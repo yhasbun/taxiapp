@@ -13,7 +13,7 @@ var customIcon = L.icon(iconOptions);
 var markerOptions = {
   title: "MyLocation",
   clickable: true,
-  draggable: true,
+  draggable: false,
   icon: customIcon
 }
 // Creating a Marker
