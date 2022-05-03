@@ -1,39 +1,18 @@
+import L from "leaflet";
 import AwesomeMarkers from "leaflet.awesome-markers";
 
-var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
-map.setZoom(15);
-
-var marcadorPrimercarro = L.AwesomeMarkers.icon({
+var map = L.map("map").setView([-31.6333294, -60.6900008], 12);
+var marcadorEscuelas = L.AwesomeMarkers.icon({
   icon: "fa-university",
   prefix: "fa",
   markerColor: "blue",
   iconColor: "black"
 });
-L.marker({ lat: 11.008, lng: -74.809 }, { icon: marcadorPrimercarro }).addTo(map);
 
-/* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
-let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
-const coords_records = [];
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+  maxZoom: 18
 }).addTo(map);
 
-async function getGPS() {
-    response = await fetch("/gps");
-    coordinates = await response.json();
-    console.log(coordinates);
-    document.getElementById("LatID").textContent = coordinates.lat;
-    document.getElementById("LongID").textContent = coordinates.lon;
-    document.getElementById("FechaID").textContent = coordinates.date;
-    document.getElementById("HoraID").textContent = coordinates.time;
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);
-    map.removeLayer(marker);
-    marker = L.marker(latlng).addTo(map);
-    coords_records.push(latlng);
-    polyline.setLatLngs(coords_records);
-}
-
-setInterval(getGPS, 5000);
+L.marker([-31.6333294, -60.6900008], { icon: marcadorEscuelas }).addTo(map);
