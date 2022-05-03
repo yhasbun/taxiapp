@@ -32,6 +32,9 @@ app.get("/historicos", function (req, res) {
 app.get("/buzon", function (req, res) {
     res.sendFile(path.join(__dirname + "/buzon.html"));
 });
+app.get("/logo1.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/logo1.png"));
+});
 
 
 app.get('/gps', (req, res) => {
