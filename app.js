@@ -35,6 +35,9 @@ app.get("/buzon", function (req, res) {
 app.get("/logo1.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/logo1.png"));
 });
+app.get("/logo2.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/logo2.png"));
+});
 
 
 app.get('/gps', (req, res) => {
