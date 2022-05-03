@@ -1,7 +1,17 @@
+import AwesomeMarkers from "leaflet.awesome-markers";
+
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 
-let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map);
+var marcadorPrimercarro = L.AwesomeMarkers.icon({
+  icon: "fa-university",
+  prefix: "fa",
+  markerColor: "blue",
+  iconColor: "black"
+});
+L.marker({ lat: 11.008, lng: -74.809 }, { icon: marcadorPrimercarro }).addTo(map);
+
+/* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
 
