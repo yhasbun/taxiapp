@@ -3,7 +3,7 @@ map.setZoom(15);
 
 // Icon options
 var iconOptions = {
-  iconUrl: "https://i.ibb.co/yRqhLHg/icon.jpg",
+  iconUrl: "logo.png",
   iconSize: [50, 50]
 }
 // Creating a custom icon
