@@ -419,9 +419,10 @@
     <div class="btn_alert" id="btn_alert"> 
       <button>Mostrar Alertas</button>
     </div>
-  
+      
     <script>
-      $('button').click(function(){
+
+      const onclick = function(){
         $('.alert').addClass("show");
         $('.alert').removeClass("hide");
         $('.alert').addClass("showAlert");
@@ -429,13 +430,18 @@
           $('.alert').removeClass("show");
           $('.alert').addClass("hide");
         },5000);
-      });
-      $('.close-btn').click(function(){
+      }      
+      $('button').click(onclick);
+      onclick();
+
+      const closeclick = function(){
         $('.alert').removeClass("show");
         $('.alert').addClass("hide");
-      });
+      }
+      $('.close-btn').click(closeclick);
     </script>
       
+
 </div>
     </nav>
 

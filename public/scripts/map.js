@@ -2,7 +2,24 @@ var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 var PORT_RES = process.env.RES;
 
-let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map);
+// Icon options
+var iconOptions = {
+  iconUrl: "https://i.ibb.co/yRqhLHg/icon.jpg",
+  iconSize: [50, 50]
+}
+// Creating a custom icon
+var customIcon = L.icon(iconOptions);
+
+// Creating Marker Options
+var markerOptions = {
+  title: "MyLocation",
+  clickable: true,
+  draggable: true,
+  icon: customIcon
+}
+// Creating a Marker
+var marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);;
+/* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
 
@@ -12,7 +29,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-    response = await fetch(PORT_RES);
+    response = await fetch("/gps");
     coordinates = await response.json();
     console.log(coordinates);
     document.getElementById("LatID").textContent = coordinates.lat;

@@ -19,6 +19,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+  
 <style>
     *,
 *::before,
@@ -46,7 +47,7 @@ body {
   align-items: center;
   position: relative;
   border-bottom: 4px solid #5e08d4;
- 
+  z-index: 9999;
 }
 
 
@@ -56,7 +57,7 @@ body {
   border-radius: 50%;
   background-color: rgb(0, 0, 7);
   padding: 0.6rem 0.3rem;
-  z-index: 10;
+  z-index: 9999;
   cursor: pointer;
   box-shadow: var(--box-shadow);
   display: flex;
@@ -226,7 +227,7 @@ z-index: 9999;
     <a href="https://github.com/yhasbun/taxiapp" target ="_blank" class="social-networks__links-item">
         <i class="fa-brands fa-github"></i>
     </a>
-    <a href="../buzon.html" target ="blank" class="social-networks_links-item">
+    <a href="../buzon/" target ="blank" class="social-networks_links-item">
       <i class="fa-solid fa-envelope"></i>
   </a>
 </div>
@@ -261,6 +262,11 @@ z-index: 9999;
         <div>
             <label>Hora:ㅤㅤ</label>
             <label id="HoraID">Sin datos</label>
+        </div> 
+    
+        <div>
+          <label>RPM:ㅤㅤ</label>
+          <label id="RPMID">Sin datos</label>
         </div> 
     
 </div>

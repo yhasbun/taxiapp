@@ -104,16 +104,18 @@ server.listen(PORT, function () {
         lon = msg_values[1].split(':')[1].trim()
         date = msg_values[2].split(',')[0].trim()
         time = msg_values[2].split(',')[1].trim()
-        
+        rpm = msg_values[3].trim()
+
         coords = {
             lat: lat,
             lon: lon,
             date: date,
-            time: time
+            time: time,
+            rpm : rpm
         }
 
         var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
-        var values = [[lat, lon, date, time],];
+        var values = [[lat, lon, date, time, rpm],];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
