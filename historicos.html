@@ -162,7 +162,7 @@
     align-items: center;
     z-index: 1;
   }
-  #MapID { height: 500px; } 
+  #MapID { height: 580px;  } 
   #logoimg{
     height: 80px;
     width: 100px;
@@ -325,7 +325,6 @@
   transform: translateY(-50%);
   color: #5e08d4 ;
   font-size: 30px;
-  
 }
 .alert .msg{
   padding: 0 20px;
@@ -341,7 +340,6 @@
   background: #808dff;
   padding: 20px 18px;
   cursor: pointer;
-  
 }
 .alert .close-btn:hover{
   background: #808dff;
@@ -468,23 +466,7 @@
 
    
  <script>
-   // Icon options
-var iconOptions = {
-  iconUrl: 'logo1.png',
-  iconSize: [50, 50]
-}
-// Creating a custom icon
-var customIcon = L.icon(iconOptions);
-
-// Creating Marker Options
-var markerOptions = {
-  title: "MyLocation",
-  clickable: true,
-  draggable: true,
-  icon: customIcon
-}
-// Creating a Marker
-   var marker = L.marker(markerOptions);
+   
    var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
    map.setZoom(13);
 
