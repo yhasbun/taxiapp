@@ -19,6 +19,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+  
 <style>
     *,
 *::before,
@@ -40,13 +41,13 @@ body {
   color: inherit;
 }
 .nav-main{
-  background-color: rgb(48, 40, 53);
+  background-color: #303131;
   padding: 0.6rem 1.2rem;
   display: flex;
   align-items: center;
   position: relative;
   border-bottom: 4px solid #5e08d4;
- 
+  z-index: 9999;
 }
 
 
@@ -56,7 +57,7 @@ body {
   border-radius: 50%;
   background-color: rgb(0, 0, 7);
   padding: 0.6rem 0.3rem;
-  z-index: 10;
+  z-index: 9999;
   cursor: pointer;
   box-shadow: var(--box-shadow);
   display: flex;
@@ -88,7 +89,7 @@ transform: translateY(-0.5em) rotate(-45deg);
 .nav-main__btn-collapse-bg{
 height: 100%;
 width: var(--size-btn-collapse);
-background-color: rgb(48, 40, 53);
+background-color: #303131;
 position: absolute;
 left: 0;
 top: 0;
@@ -129,7 +130,7 @@ display: flex;
 flex-direction: column;
 width: var(--size-btn-collapse);
 height: calc(100hv-65px);
-background-color: rgb(48, 40, 53);
+background-color: #303131;
 padding: 2rem;
 margin-left: 80px;
 font-weight: 300;
@@ -140,7 +141,7 @@ transform-origin: top;
 transition: 0.3s;
 border-radius: 0% 0% 5% 5%;
 border: 3px solid #5e08d4;
-border-top: 0px;
+border-top: 0spx;
 z-index: 9999;
 
 
@@ -167,8 +168,6 @@ z-index: 9999;
   
 }
 #MapID { height: 580px; 
-          
-
 } 
 #logoimg{
   height: 80px;
@@ -177,6 +176,7 @@ z-index: 9999;
 
 }
 #taxi{transform: translate(260px);
+      margin-top: -20px
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
@@ -225,13 +225,12 @@ z-index: 9999;
     <a href="https://github.com/yhasbun/taxiapp" target ="_blank" class="social-networks__links-item">
         <i class="fa-brands fa-github"></i>
     </a>
-    <a href="../buzon.html/" target ="blank" class="social-networks_links-item">
+    <a href="../buzon/" target ="blank" class="social-networks_links-item">
       <i class="fa-solid fa-envelope"></i>
   </a>
 </div>
 
-<div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location</h1> </div>
-<img src="logo1.png" height="200px">
+<div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location<img src="https://i.ibb.co/yRqhLHg/icon.jpg"height="80px"></h1> </div>
 </a>
    
 
@@ -263,6 +262,11 @@ z-index: 9999;
             <label id="HoraID">Sin datos</label>
         </div> 
     
+        <div>
+          <label>RPM:ㅤㅤ</label>
+          <label id="RPMID">Sin datos</label>
+        </div> 
+    
 </div>
     </nav>
 
@@ -274,4 +278,6 @@ z-index: 9999;
 </body> 
 
 <!-- box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; -->
+
 </html>
+
