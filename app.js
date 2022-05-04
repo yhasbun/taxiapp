@@ -120,9 +120,7 @@ server.listen(PORT, function () {
             lat: lat,
             lon: lon,
             date: date,
-            time: time,
-            rpm : rpm,
-            carro : carro
+            time: time
         }
 
         var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, Rpm, Carro) VALUES ?";
