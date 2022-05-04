@@ -16,6 +16,7 @@ var lon = '';
 var date = '';
 var time = '';
 var rpm = '';
+var carro = '';
 var coords;
 
 app.use(express.static(__dirname +"/public"));
@@ -118,11 +119,12 @@ server.listen(PORT, function () {
             lon: lon,
             date: date,
             time: time,
-            rpm: rpm
+            rpm: rpm,
+            carro:carro
         }
 
-        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
-        var values = [[lat, lon, date, time, rpm],];
+        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, rpm,carro ) VALUES ?";
+        var values = [[lat, lon, date, time, rpm, carro],];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
