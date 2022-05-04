@@ -126,7 +126,7 @@ server.listen(PORT, function () {
         }
 
         var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, Rpm, Carro) VALUES ?";
-        var values = [[lat, lon, date, time, rpm, carro],];
+        var values = [lat, lon, date, time, rpm, carro];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
