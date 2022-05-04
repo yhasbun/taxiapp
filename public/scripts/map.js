@@ -4,7 +4,7 @@ var PORT_RES = process.env.RES;
 
 // Icon options
 var iconOptions = {
-  iconUrl: "https://i.ibb.co/yRqhLHg/icon.jpg",
+  iconUrl: "logo1.png",
   iconSize: [50, 50]
 }
 // Creating a custom icon
@@ -14,11 +14,11 @@ var customIcon = L.icon(iconOptions);
 var markerOptions = {
   title: "MyLocation",
   clickable: true,
-  draggable: true,
+  draggable: false,
   icon: customIcon
 }
 // Creating a Marker
-var marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);;
+let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];

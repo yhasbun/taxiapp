@@ -16,6 +16,8 @@ var lat = '';
 var lon = '';
 var date = '';
 var time = '';
+var rpm = '';
+var carro = '';
 var coords;
 
 app.use(express.static(__dirname +"/public"));
@@ -31,6 +33,12 @@ app.get("/historicos", function (req, res) {
 });
 app.get("/buzon", function (req, res) {
     res.sendFile(path.join(__dirname + "/buzon.html"));
+});
+app.get("/logo1.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/logo1.png"));
+});
+app.get("/logo2.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/logo2.png"));
 });
 
 
