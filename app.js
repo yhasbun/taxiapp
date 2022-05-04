@@ -7,6 +7,7 @@ const path = require("path");
 const socket = dgram.createSocket('udp4');
 const config = require('dotenv').config();
 const mysql = require('mysql');
+//const { createSecureContext } = require('tls');
 
 
 var PORT = process.env.PORT;
@@ -105,17 +106,19 @@ server.listen(PORT, function () {
         date = msg_values[2].split(',')[0].trim()
         time = msg_values[2].split(',')[1].trim()
         rpm = msg_values[3].trim()
+        carro = msg_values[4].split(':')[1].trim()
 
         coords = {
             lat: lat,
             lon: lon,
             date: date,
             time: time,
-            rpm : rpm
+            rpm : rpm,
+            carro : carro
         }
 
-        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora) VALUES ?";
-        var values = [[lat, lon, date, time, rpm],];
+        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, Rpm, Carro) VALUES ?";
+        var values = [[lat, lon, date, time, rpm, carro],];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
