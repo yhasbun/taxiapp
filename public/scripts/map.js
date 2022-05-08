@@ -1,7 +1,9 @@
+
+
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
-
-// Icon options
+if (carro == 1) {
+ // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
   iconSize: [50, 50]
@@ -11,11 +13,27 @@ var customIcon = L.icon(iconOptions);
 
 // Creating Marker Options
 var markerOptions = {
-  title: "MyLocation",
+  title: "Carro 1",
   clickable: true,
-  draggable: true,
   icon: customIcon
 }
+}else{
+  var iconOptions = {
+    iconUrl: 'logo2.png',
+    iconSize: [50, 50]
+  }
+  // Creating a custom icon
+  var customIcon = L.icon(iconOptions);
+  
+  // Creating Marker Options
+  var markerOptions = {
+    title: "Carro 2",
+    clickable: true,
+    icon: customIcon
+}
+};
+
+
 // Creating a Marker
 let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
