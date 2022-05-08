@@ -34,6 +34,8 @@ async function getGPS() {
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
     document.getElementById("HoraID").textContent = coordinates.time;
+    document.getElementById("RPMID").textContent = coordinates.rpm;
+    document.getElementById("CARID").textContent = coordinates.carro;
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
     map.removeLayer(marker);
