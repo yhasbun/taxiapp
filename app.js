@@ -7,7 +7,6 @@ const path = require("path");
 const socket = dgram.createSocket('udp4');
 const config = require('dotenv').config();
 const mysql = require('mysql');
-//const { createSecureContext } = require('tls');
 
 
 var PORT = process.env.PORT;
@@ -34,17 +33,18 @@ app.get("/historicos", function (req, res) {
 app.get("/buzon", function (req, res) {
     res.sendFile(path.join(__dirname + "/buzon.html"));
 });
+
+
+app.get('/gps', (req, res) => {
+    res.json(coords);
+})
+
 app.get("/logo1.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/logo1.png"));
 });
 app.get("/logo2.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/logo2.png"));
 });
-
-
-app.get('/gps', (req, res) => {
-    res.json(coords);
-})
 
 app.post('/historic', (req, res) => {
     console.log(req.body);
@@ -113,18 +113,20 @@ server.listen(PORT, function () {
         lon = msg_values[1].split(':')[1].trim()
         date = msg_values[2].split(',')[0].trim()
         time = msg_values[2].split(',')[1].trim()
-        rpm = msg_values[3].trim()
-        carro = msg_values[4].split(':')[1].trim()
-
+        rpm = msg_values[3].split(',')[1].trim()
+        rpm = msg_values[4].split(',')[1].trim()
+        
         coords = {
             lat: lat,
             lon: lon,
             date: date,
-            time: time
+            time: time,
+            rpm: rpm,
+            carro: carro
         }
 
-        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, Rpm, Carro) VALUES ?";
-        var values = [lat, lon, date, time, rpm, carro];
+        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, RPM, Carro) VALUES ?";
+        var values = [[lat, lon, date, time, rpm, carro],];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
