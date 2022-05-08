@@ -1,3 +1,5 @@
+
+
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 if (carro == 1) {
@@ -15,6 +17,7 @@ var markerOptions = {
   clickable: true,
   icon: customIcon
 }
+let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
 } else
   // Icon options
 var iconOptions = {
@@ -25,14 +28,14 @@ var iconOptions = {
 var customIcon = L.icon(iconOptions);
 
 // Creating Marker Options
-var markerOptions = {
+var caroo2 = {
   title: "MyLocation",
   clickable: true,
   icon: customIcon
 }
-
+let marker = L.marker({ lat: 11.008, lng: -74.809 }, caroo2).addTo(map);
 // Creating a Marker
-let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
+
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
