@@ -39,7 +39,7 @@ async function getGPS() {
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
     map.removeLayer(marker);
-    marker = L.marker(latlng).addTo(map);
+    marker = L.marker(latlng , markerOptions).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
 }
