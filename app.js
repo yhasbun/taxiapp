@@ -114,7 +114,7 @@ server.listen(PORT, function () {
         date = msg_values[2].split(',')[0].trim()
         time = msg_values[2].split(',')[1].trim()
         rpm = msg_values[3].split(',')
-        rpm = msg_values[4].split(',')[1].trim()
+        carro = msg_values[4].split(',')
         
         coords = {
             lat: lat,
