@@ -278,46 +278,7 @@ z-index: 9999;
 
 </body> 
 
-    <div id="MapID" > </div>
-     <script>
-        var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
-        map.setZoom(13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	     maxZoom: 19,
-	     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        async function getGPS() {
-            response = await fetch("http://18.117.186.216:3000/gps");
-            coordinates = await response.json();
-            document.getElementById("LatID").textContent = coordinates.lat;
-            document.getElementById("LongID").textContent = coordinates.lon;
-            document.getElementById("FechaID").textContent = coordinates.date;
-            document.getElementById("HoraID").textContent = coordinates.time;
-            const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)]
-            var marker = L.marker(latlng).addTo(map);
-            map.setView(latlng);
-          }
-        setInterval(getGPS, 1000);
-
-		
-    </script>
-
-  <!--script src="js.js"></script>
-  <form action="" method="POST">
-    <div>
-      Yes or No?: <input type="checkbox" id="trigger" name="question">
-    </div>
-    <div id="hidden_fields">
-      This is hidden: <input type="text" id="hidden_field" name="hidden">
-    </div>
-    <div>
-      Populate: <input type="text" id="populate" name="populate">
-    </div>
-  </form>
-
-</body> 
-
- box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; -->
+   
 </html>
-c
+
 
