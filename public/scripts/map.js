@@ -1,7 +1,7 @@
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
-
-// Icon options
+if (carro == 1) {
+ // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
   iconSize: [50, 50]
@@ -15,6 +15,22 @@ var markerOptions = {
   clickable: true,
   icon: customIcon
 }
+} else
+  // Icon options
+var iconOptions = {
+  iconUrl: 'logo2.png',
+  iconSize: [50, 50]
+}
+// Creating a custom icon
+var customIcon = L.icon(iconOptions);
+
+// Creating Marker Options
+var markerOptions = {
+  title: "MyLocation",
+  clickable: true,
+  icon: customIcon
+}
+
 // Creating a Marker
 let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
@@ -39,7 +55,7 @@ async function getGPS() {
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
     map.removeLayer(marker);
-    marker = L.marker(latlng , markerOptions).addTo(map);
+    marker = L.marker(latlng).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
 }
