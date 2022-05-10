@@ -38,7 +38,7 @@ async function getGPS() {
     document.getElementById("CARID").textContent = coordinates.carro;
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
-    map.removeLayer(marker);
+    map.removeLayer(marker).addTo(map);
     marker = L.marker(latlng).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
