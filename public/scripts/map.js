@@ -35,8 +35,9 @@ let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
 let marker2 = L.marker({ lat: 11.008, lng: -75.809 }, markerOptions2).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+let polyline2 = L.polyline([],{COLOR: "#F7A52E", smoothFactor:3}).addTo(map);
 const coords_records = [];
-//const coords_records2 = [];
+const coords_records2 = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -45,7 +46,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
-    coordinates = await response.json();
+    coordinates,coordinates2 = await response.json();
     console.log(coordinates);
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
@@ -60,7 +61,7 @@ async function getGPS() {
   
   
 //////////
-    coordinates2 =await response.json();
+    
     console.log(coordinates2);
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
@@ -80,8 +81,9 @@ async function getGPS() {
     marker = L.marker(latlng, markerOptions).addTo(map);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
     coords_records.push(latlng);
-    coords_records2.pish(latlng2);
+    coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
+    polyline2.setLatLngs(coords_records2);
 }
 
 setInterval(getGPS, 2000);
