@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
@@ -19,11 +19,11 @@ var markerOptions = {
 }
 // Creating a Marker
 let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
-let marker2 = L.marker({ lat: 11.008, lng: -75.809 }, markerOptions).addTo(map);
+//let marker2 = L.marker({ lat: 11.008, lng: -75.809 }, markerOptions).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
-const coords_records2 = [];
+//const coords_records2 = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -40,11 +40,11 @@ async function getGPS() {
     document.getElementById("HoraID").textContent = coordinates.time;
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
-    if(parseFloat(coordinates.carro=="1")){
+    if(parseFloat(coordinates.carro)=="1"){
 
-      const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-      map.setView(latlng);}
-    
+    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
+    map.setView(latlng);}
+  
   
 //////////
     coordinates2 = await response.json();
@@ -56,13 +56,13 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
 
-    if(parseFloat(coordinates2.carro=="2")){
+    if(parseFloat(coordinates2.carro)=="2"){
 
     const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng2);}
     
     
-    ////
+    
     map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
     marker2 = L.marker(latlng2,markerOptions).addTo(map);
