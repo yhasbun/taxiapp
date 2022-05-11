@@ -4,7 +4,7 @@ map.setZoom(15);
 // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
-  iconSize: [50, 50]
+  iconSize: [38, 42]
 }
 // Creating a custom icon
 var customIcon = L.icon(iconOptions);
