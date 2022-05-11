@@ -55,7 +55,7 @@ async function getGPS() {
     
   
     
-    if(jaja=="1000"){
+    
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -73,6 +73,7 @@ async function getGPS() {
 
       const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
       map.setView(latlng2);}
+
    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     
     
