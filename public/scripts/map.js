@@ -1,4 +1,3 @@
-const { FLOAT } = require("mysql/lib/protocol/constants/types");
 
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
