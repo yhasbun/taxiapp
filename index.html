@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxilocation</title>
+   
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./public/css/all.min.css" />
@@ -141,7 +141,7 @@ transform-origin: top;
 transition: 0.3s;
 border-radius: 0% 0% 5% 5%;
 border: 3px solid #5e08d4;
-border-top: 0spx;
+border-top: 0px;
 z-index: 9999;
 
 
@@ -168,15 +168,16 @@ z-index: 9999;
   
 }
 #MapID { height: 580px; 
+       
+
 } 
 #logoimg{
   height: 80px;
   width: 100px;
-  transform:translateX(280px)
-
+  margin-left: 350px;
 }
-#taxi{transform: translate(260px);
-      margin-top: -20px
+#taxi{margin-left: -85px;
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
@@ -230,8 +231,8 @@ z-index: 9999;
   </a>
 </div>
 
-<div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location<img src="https://i.ibb.co/yRqhLHg/icon.jpg"height="80px"></h1> </div>
-</a>
+<div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location</h1> </div>
+<a href="/" class="logo"><img src="https://i.ibb.co/yRqhLHg/icon.jpg" id="logoimg" height="80px" /></a>
    
 
 <div class="nav-main_menu">
@@ -266,6 +267,10 @@ z-index: 9999;
           <label>RPM:ㅤㅤ</label>
           <label id="RPMID">Sin datos</label>
         </div> 
+    <div>
+          <label>Carro:ㅤㅤ</label>
+          <label id="CARID">Sin datos</label>
+        </div> 
     
 </div>
     </nav>
@@ -277,7 +282,7 @@ z-index: 9999;
 
 </body> 
 
-<!-- box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; -->
-
+   
 </html>
+
 

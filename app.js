@@ -15,7 +15,10 @@ var lat = '';
 var lon = '';
 var date = '';
 var time = '';
+var rpm = '';
+var carro = '';
 var coords;
+var coords2;
 
 app.use(express.static(__dirname +"/public"));
 app.use(express.json())
@@ -36,6 +39,13 @@ app.get("/buzon", function (req, res) {
 app.get('/gps', (req, res) => {
     res.json(coords);
 })
+
+app.get("/logo1.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/logo1.png"));
+});
+app.get("/logo2.png", function (req, res) {
+    res.sendFile(path.join(__dirname + "/logo2.png"));
+});
 
 app.post('/historic', (req, res) => {
     console.log(req.body);
@@ -104,18 +114,20 @@ server.listen(PORT, function () {
         lon = msg_values[1].split(':')[1].trim()
         date = msg_values[2].split(',')[0].trim()
         time = msg_values[2].split(',')[1].trim()
-        rpm = msg_values[3].trim()
-
+        rpm = msg_values[3].split(',')
+        carro = msg_values[4].split(',')
+        
         coords = {
             lat: lat,
             lon: lon,
             date: date,
             time: time,
-            rpm : rpm
+            rpm: rpm,
+            carro: carro
         }
 
-        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, rpm) VALUES ?";
-        var values = [[lat, lon, date, time, rpm],];
+        var mysql = "INSERT INTO datos (Latitud, Longitud, Fecha, Hora, RPM, Carro) VALUES ?";
+        var values = [[lat, lon, date, time, rpm, carro],];
         con.query(mysql, [values], function (err) {
             if (err) throw err;
             console.log("1 record inserted");
@@ -132,4 +144,5 @@ server.listen(PORT, function () {
         addres: process.env.HOST,
         port: PORT_UDP
     });
+    
 });
