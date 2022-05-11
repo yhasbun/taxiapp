@@ -50,8 +50,6 @@ async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
     coordinates = await response.json();
     console.log(coordinates);
-    coordinates2=coordinates;
-    
     
   
     
@@ -85,7 +83,7 @@ async function getGPS() {
     coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
     polyline2.setLatLngs(coords_records2);
-}
 
-setInterval(getGPS, 2000);
+
+setInterval(getGPS, 2000);}
 //public FLOAT iff(){};/
