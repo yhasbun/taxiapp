@@ -68,8 +68,11 @@ async function getGPS() {
     
    
 
-    if(coordinates2.carro=="carro: 2"){
-      
+    if(jaja=="1000"){
+
+      const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
+      map.setView(latlng2);}
+          
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
@@ -77,13 +80,8 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
 
-    if(jaja=="1000"){
-
-    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
-    map.setView(latlng2);}
     
-    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
-    map.setView(latlng2);
+
   
     
     
