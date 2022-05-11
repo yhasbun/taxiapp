@@ -35,7 +35,7 @@ let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
 let marker2 = L.marker({ lat: 11.008, lng: -75.809 }, markerOptions2).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
-let polyline2 = L.polyline([],{COLOR: "#F7A52E", smoothFactor:3}).addTo(map);
+let polyline2 = L.polyline([],{color: "#F7A52E", smoothFactor:3}).addTo(map);
 const coords_records = [];
 const coords_records2 = [];
 
@@ -59,12 +59,17 @@ async function getGPS() {
     if(jaja=="1000"){
 
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);}
+    map.setView(latlng);
   
   
+   
 //////////
     
     
+   
+
+    if(coordinates2.carro=="carro: 2"){
+      
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
@@ -77,6 +82,9 @@ async function getGPS() {
     const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2);}
     
+    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
+    map.setView(latlng2);
+  
     
     
     map.removeLayer(marker);
