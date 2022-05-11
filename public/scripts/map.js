@@ -27,7 +27,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-
     response = await fetch("http://taxilocationafb.ddns.net/gps");
     coordinates = await response.json();
     console.log(coordinates);
@@ -40,9 +39,23 @@ async function getGPS() {
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
     map.removeLayer(marker);
-    marker = L.marker(latlng, markerOptions).addTo(map);
+    marker = L.marker(latlng).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
 }
 
-setInterval(getGPS, 2000);
+// socket new User connected
+socket.on('newUserCoordinates', (coords) => {
+  console.log(coords);
+  const userIcon = L.icon({
+    iconUrl: 'logo2.png',
+    iconSize: [38, 42],
+  })
+  const newUserMarker = L.marker([coords.lat, coords.lng], {
+    icon: userIcon 
+  });
+  newUserMarker.bindPopup('New User!');
+  map.addLayer(newUserMarker);
+}); 
+
+setInterval(getGPS, 5000);
