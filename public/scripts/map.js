@@ -51,9 +51,7 @@ socket.on('newUserCoordinates', (coords) => {
     iconUrl: 'logo2.png',
     iconSize: [38, 42],
   })
-  const newUserMarker = L.marker([coords.lat, coords.lng], {
-    icon: userIcon 
-  });
+  const newUserMarker = L.marker(latlng).addTo(map);
   newUserMarker.bindPopup('New User!');
   map.addLayer(newUserMarker);
 }); 
