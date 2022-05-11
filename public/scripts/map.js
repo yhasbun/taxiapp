@@ -55,7 +55,7 @@ async function getGPS() {
     document.getElementById("HoraID").textContent = coordinates.time;
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
-    if(parseFloat(coordinates.carro)==1){
+    if(coordinates2.carro=="carro: 1"){
 
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);}
@@ -71,7 +71,7 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
 
-    if(parseFloat(coordinates2.carro)==2){
+    if(coordinates2.carro=="carro: 2"){
 
     const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng2);}
