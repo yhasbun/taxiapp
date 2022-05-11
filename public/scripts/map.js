@@ -1,7 +1,7 @@
 
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
-
+jaja = "1000";
 // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
@@ -55,7 +55,8 @@ async function getGPS() {
     document.getElementById("HoraID").textContent = coordinates.time;
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
-    if(coordinates.rmp=="1000"){
+    
+    if(jaja=="1000"){
 
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);}
@@ -71,7 +72,7 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
 
-    if(coordinates2.carro=="carro: 2"){
+    if(jaja=="1000"){
 
     const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2);}
