@@ -88,6 +88,7 @@ async function getGPS() {
     
     
     map.removeLayer(marker);
+    map.removeLayer(marker2);
     marker = L.marker(latlng, markerOptions).addTo(map);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
     coords_records.push(latlng);
