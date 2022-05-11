@@ -27,7 +27,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
+<<<<<<< Updated upstream
     response = await fetch("http://taxilocationafb.ddns.net/gps");
+=======
+    response = await fetch("http://23.22.43.21:8080/gps);
+>>>>>>> Stashed changes
     coordinates = await response.json();
     console.log(coordinates);
     document.getElementById("LatID").textContent = coordinates.lat;
@@ -44,4 +48,4 @@ async function getGPS() {
     polyline.setLatLngs(coords_records);
 }
 
-setInterval(getGPS, 5000);
+setInterval(getGPS, 2000);
