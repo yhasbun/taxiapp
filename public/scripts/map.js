@@ -51,6 +51,11 @@ async function getGPS() {
     coordinates = await response.json();
     console.log(coordinates);
     coordinates2=coordinates;
+    
+    
+  
+    
+    if(jaja=="1000"){
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -68,10 +73,11 @@ async function getGPS() {
 
       const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
       map.setView(latlng2);}
-  
+   const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     
     
     map.removeLayer(marker);
+    map.removeLayer(marker2);
     marker = L.marker(latlng, markerOptions).addTo(map);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
     coords_records.push(latlng);
@@ -81,4 +87,4 @@ async function getGPS() {
 }
 
 setInterval(getGPS, 2000);
-//public FLOAT iff(){};
+//public FLOAT iff(){};/
