@@ -49,21 +49,21 @@ async function getGPS() {
     coordinates = await response.json();
     console.log(coordinates);
     coordinates2=coordinates;
+    
+    
+  
+    
+    if(jaja=="1000"){
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
     document.getElementById("HoraID").textContent = coordinates.time;
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
-    
-  
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    if(jaja=="1000"){
-
    
     map.setView(latlng);}
   
-  
+  const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
    
 //////////
     
@@ -72,19 +72,19 @@ async function getGPS() {
 
     
           
-    document.getElementById("LatID").textContent = coordinates2.lat;
+   
+    
+   
+  
+    if(jaja=="1000"){
+     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
     document.getElementById("HoraID").textContent = coordinates2.time;
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
-    
-    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
-  
-    if(jaja=="1000"){
-
       map.setView(latlng2);}
-  
+   const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     
     
     map.removeLayer(marker);
