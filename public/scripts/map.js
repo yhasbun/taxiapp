@@ -1,4 +1,4 @@
-const { FLOAT } = require("mysql/lib/protocol/constants/types");
+
 
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
@@ -47,7 +47,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-    response = await fetch("http://taxilocationafb.ddns.net/gps");
+    response = await fetch("/gps");
     coordinates = await response.json();
     console.log(coordinates);
     
@@ -83,7 +83,7 @@ async function getGPS() {
     coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
     polyline2.setLatLngs(coords_records2);
+   
 
-
-setInterval(getGPS, 2000);}
-//public FLOAT iff(){};/
+setInterval(getGPS, 2000);
+   }
