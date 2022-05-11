@@ -47,7 +47,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
     coordinates,coordinates2 = await response.json();
-    console.log(coordinates);
+    console.log(coordinates,coordinates2);
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -62,7 +62,7 @@ async function getGPS() {
   
 //////////
     
-    console.log(coordinates2);
+    
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
