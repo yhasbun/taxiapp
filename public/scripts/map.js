@@ -1,5 +1,8 @@
+
+
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
+const socket = io.connect();
 
 // Icon options
 var iconOptions = {
@@ -27,11 +30,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-<<<<<<< Updated upstream
     response = await fetch("http://taxilocationafb.ddns.net/gps");
-=======
-    response = await fetch("http://23.22.43.21:8080/gps);
->>>>>>> Stashed changes
     coordinates = await response.json();
     console.log(coordinates);
     document.getElementById("LatID").textContent = coordinates.lat;
@@ -43,9 +42,53 @@ async function getGPS() {
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
     map.removeLayer(marker);
-    marker = L.marker(latlng, markerOptions).addTo(map);
+    marker = L.marker(latlng).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
 }
 
-setInterval(getGPS, 2000);
+socket.on('newUserCoordinates', (coords) => {
+  console.log(coords);
+  var iconOptions = {
+    iconUrl: 'logo2.png',
+    iconSize: [50, 50]
+  }
+  // Creating a custom icon
+  var customIcon = L.icon(iconOptions);
+  
+  // Creating Marker Options
+  var markerOptions = {
+    title: "Carro 2",
+    clickable: true,
+    icon: customIcon
+  }
+  let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
+  let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+const coords_records = [];
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+async function getGPS() {
+    response = await fetch("http://taxilocationafb.ddns.net/gps");
+    coordinates = await response.json();
+    console.log(coordinates);
+    document.getElementById("LatID").textContent = coordinates.lat;
+    document.getElementById("LongID").textContent = coordinates.lon;
+    document.getElementById("FechaID").textContent = coordinates.date;
+    document.getElementById("HoraID").textContent = coordinates.time;
+    document.getElementById("RPMID").textContent = coordinates.rpm;
+    document.getElementById("CARID").textContent = coordinates.carro;
+    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
+    map.setView(latlng);
+    map.removeLayer(marker);
+    marker = L.marker(latlng).addTo(map);
+    coords_records.push(latlng);
+    polyline.setLatLngs(coords_records);
+}
+
+}); 
+
+setInterval(getGPS, 5000);
