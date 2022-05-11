@@ -1,7 +1,9 @@
+const { FLOAT } = require("mysql/lib/protocol/constants/types");
 
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 var jaja = "1000";
+String
 // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
@@ -56,31 +58,15 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
     
-    if(jaja=="1000"){
+    if(coordinates.carro==coordinates.carro){
 
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);}
   
-  
-   
-//////////
     
-    
-   
+    if(coordinates.carro==coordinates.carro){
 
-    
-          
-    document.getElementById("LatID").textContent = coordinates2.lat;
-    document.getElementById("LongID").textContent = coordinates2.lon;
-    document.getElementById("FechaID").textContent = coordinates2.date;
-    document.getElementById("HoraID").textContent = coordinates2.time;
-    document.getElementById("RPMID").textContent = coordinates2.rpm;
-    document.getElementById("CARID").textContent = coordinates2.carro;
-    
-    
-    if(jaja=="1000"){
-
-      const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
+      const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
       map.setView(latlng2);}
   
     
@@ -95,3 +81,4 @@ async function getGPS() {
 }
 
 setInterval(getGPS, 2000);
+//public FLOAT iff(){};
