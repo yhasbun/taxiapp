@@ -60,7 +60,7 @@ async function getGPS() {
   
   
 //////////
-    coordinates2 =await response.clone().json();
+    coordinates2 =await response.json();
     console.log(coordinates2);
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
