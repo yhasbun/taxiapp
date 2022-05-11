@@ -144,12 +144,5 @@ server.listen(PORT, function () {
         addres: process.env.HOST,
         port: PORT_UDP
     });
-     module.exports = io => {
-        io.on('connection', socket => {
-      
-          socket.on('userCoordinates', (coords) => {
-            socket.broadcast.emit('newUserCoordinates', coords);
-          });
-        });
-      };
+    
 });
