@@ -62,8 +62,10 @@ socket.on('newUserCoordinates', (coords) => {
     clickable: true,
     icon: customIcon
   }
-  let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
-  let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+ // Creating a Marker
+let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
+/* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
+let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -88,7 +90,6 @@ async function getGPS() {
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
 }
-
-}); 
+  }); 
 
 setInterval(getGPS, 5000);
