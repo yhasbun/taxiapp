@@ -73,7 +73,7 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
   
-    if(jaja=="1000"){
+    
     
     if(coordinates.carro==coordinates.carro){
 
