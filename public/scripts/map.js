@@ -59,7 +59,7 @@ async function getGPS() {
     if(jaja=="1000"){
 
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);
+    map.setView(latlng);}
   
   
    
