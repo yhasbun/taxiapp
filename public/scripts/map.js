@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 
@@ -17,9 +19,11 @@ var markerOptions = {
 }
 // Creating a Marker
 let marker = L.marker({ lat: 11.008, lng: -74.809 }, markerOptions).addTo(map);
+let marker2 = L.marker({ lat: 11.008, lng: -75.809 }, markerOptions).addTo(map);
 /* let marker = L.marker({ lat: 11.008, lng: -74.809 },{ title: "Me" },{color:"#cf0404"}).addTo(map); */
 let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 const coords_records = [];
+const coords_records2 = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -27,11 +31,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-<<<<<<< Updated upstream
-    response = await fetch("http://taxilocationafb.ddns.net/gps");
-=======
-    response = await fetch("http://23.22.43.21:8080/gps);
->>>>>>> Stashed changes
+    response = await fetch("http:172.0.0.0/gps");
     coordinates = await response.json();
     console.log(coordinates);
     document.getElementById("LatID").textContent = coordinates.lat;
@@ -40,11 +40,34 @@ async function getGPS() {
     document.getElementById("HoraID").textContent = coordinates.time;
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);
+    if(parseFloat(coordinates.carro=="1")){
+
+      const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
+      map.setView(latlng);}
+    
+  
+//////////
+    coordinates2 = await response.json();
+    console.log(coordinates2);
+    document.getElementById("LatID").textContent = coordinates2.lat;
+    document.getElementById("LongID").textContent = coordinates2.lon;
+    document.getElementById("FechaID").textContent = coordinates2.date;
+    document.getElementById("HoraID").textContent = coordinates2.time;
+    document.getElementById("RPMID").textContent = coordinates2.rpm;
+    document.getElementById("CARID").textContent = coordinates2.carro;
+
+    if(parseFloat(coordinates2.carro=="2")){
+
+    const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
+    map.setView(latlng2);}
+    
+    
+    ////
     map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
+    marker2 = L.marker(latlng2,markerOptions).addTo(map);
     coords_records.push(latlng);
+    coords_records2.pish(latlng2);
     polyline.setLatLngs(coords_records);
 }
 

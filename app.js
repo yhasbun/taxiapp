@@ -18,6 +18,7 @@ var time = '';
 var rpm = '';
 var carro = '';
 var coords;
+var coords2;
 
 app.use(express.static(__dirname +"/public"));
 app.use(express.json())
