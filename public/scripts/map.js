@@ -56,9 +56,11 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
     
+  
+    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     if(jaja=="1000"){
 
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
+   
     map.setView(latlng);}
   
   
@@ -77,10 +79,10 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
     
-    
+    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
+  
     if(jaja=="1000"){
 
-      const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
       map.setView(latlng2);}
   
     
