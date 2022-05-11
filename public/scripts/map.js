@@ -60,6 +60,8 @@ async function getGPS() {
   
   
 //////////
+    response = await fetch("http://taxilocationafb.ddns.net/gps");
+    coordinates = await response.json();
     console.log(coordinates2);
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
