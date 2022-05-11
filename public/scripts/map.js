@@ -4,7 +4,7 @@ map.setZoom(15);
 // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
-  iconSize: [38, 42]
+  iconSize: [50, 50]
 }
 // Creating a custom icon
 var customIcon = L.icon(iconOptions);
@@ -45,12 +45,12 @@ async function getGPS() {
 }
 
 // socket new User connected
-socket.on('newUserCoordinates', (coords) => {
-  console.log(coords);
+socket.on('newUserCoordinates', (coordinates) => {
   const userIcon = L.icon({
     iconUrl: 'logo2.png',
     iconSize: [38, 42],
   })
+  
   const newUserMarker = L.marker(latlng).addTo(map);
   newUserMarker.bindPopup('New User!');
   map.addLayer(newUserMarker);
