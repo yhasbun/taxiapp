@@ -48,6 +48,8 @@ async function getGPS() {
     coordinates = await response.json();
     console.log(coordinates);
     coordinates2=coordinates;
+     const latlng =0;
+      const latlng2 =0;
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
