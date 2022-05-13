@@ -48,8 +48,12 @@ async function getGPS() {
     coordinates = await response.json();
     console.log(coordinates);
     coordinates2=coordinates;
-     const latlng =0;
-      const latlng2 =0;
+    
+
+    
+    
+    
+   if (coordinates.carro === 'carro: 1'){
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -57,6 +61,10 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
 
+    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
+    map.setView(latlng);
+  
+   }else{ 
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
@@ -64,13 +72,7 @@ async function getGPS() {
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
     
-    
-   if (coordinates.carro === 'carro: 1'){
-
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);
-  
-   }else{ const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
+    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2);
   }
 //////////
