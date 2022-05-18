@@ -76,15 +76,15 @@ async function getGPS() {
     
    
 //////////
-if (coordinates2.carro === 'carro: 1'){
+
   const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
   map.setView(latlng);
 
-} else{
+ 
   const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
   map.setView(latlng2);
 
-}
+
 
     
     
