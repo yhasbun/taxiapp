@@ -53,7 +53,7 @@ async function getGPS() {
     
     
     
-   if (coordinates.carro === 'carro: 1'){
+
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -64,26 +64,34 @@ async function getGPS() {
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
   
-   }else{ 
+
+    
+  
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
     document.getElementById("HoraID").textContent = coordinates2.time;
     document.getElementById("RPMID").textContent = coordinates2.rpm;
     document.getElementById("CARID").textContent = coordinates2.carro;
-    
-    const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
-    map.setView(latlng2);
-  }
+
+    const newUserMarker = L.marker([coordinates2.lat, coordinates2.lon],{ 
+      icon: iconOptions2
+    });
+    newUserMarker.bindPopup('New User!');
+    map.addLayer(newUserMarker);
+
+    /* const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
+    map.setView(latlng2); */
+
 //////////
   
     
     
     map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
-    marker2 = L.marker(latlng2,markerOptions2).addTo(map);
+    marker2 = L.marker(lnewUserMarker,markerOptions2).addTo(map);
     coords_records.push(latlng);
-    coords_records2.push(latlng2);
+    coords_records2.push(newUserMarker);
     polyline.setLatLngs(coords_records);
     polyline2.setLatLngs(coords_records2);
 }
