@@ -37,6 +37,8 @@ let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 let polyline2 = L.polyline([],{color: "#F7A52E", smoothFactor:3}).addTo(map);
 const coords_records = [];
 const coords_records2 = [];
+latlng = [];
+latlng2 = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
