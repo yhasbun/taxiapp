@@ -47,13 +47,8 @@ async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
     coordinates = await response.json();
     console.log(coordinates);
-    coordinates2=coordinates;
+    coordinates2=coordinates;    
     
-
-    
-    
-    
-
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -65,8 +60,6 @@ async function getGPS() {
     map.setView(latlng);
   
 
-    
-  
     document.getElementById("LatID").textContent = coordinates2.lat;
     document.getElementById("LongID").textContent = coordinates2.lon;
     document.getElementById("FechaID").textContent = coordinates2.date;
@@ -75,7 +68,7 @@ async function getGPS() {
     document.getElementById("CARID").textContent = coordinates2.carro;
 
     const newUserMarker = L.marker[parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-   
+    map.setView(newUserMarker);
 
     /* const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2); */
@@ -86,7 +79,7 @@ async function getGPS() {
     
     map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
-    marker2 = L.marker(newUserMarker,markerOptions2).addTo(map);
+    marker2 = L.marker(lnewUserMarker,markerOptions2).addTo(map);
     coords_records.push(latlng);
     coords_records2.push(newUserMarker);
     polyline.setLatLngs(coords_records);
