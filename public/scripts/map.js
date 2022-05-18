@@ -75,7 +75,7 @@ async function getGPS() {
     document.getElementById("CARID").textContent = coordinates2.carro;
 
     const newUserMarker = L.marker[parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.addLayer(newUserMarker);
+   
 
     /* const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2); */
