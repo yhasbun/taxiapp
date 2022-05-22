@@ -1,4 +1,3 @@
-
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 var jaja = 1;
@@ -39,6 +38,8 @@ let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
 let polyline2 = L.polyline([],{color: "#F7A52E", smoothFactor:3}).addTo(map);
 const coords_records = [];
 const coords_records2 = [];
+latlng = [];
+latlng2 = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -46,13 +47,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
-    response = await fetch("/gps");
+    response = await fetch("http://taxilocationafb.ddns.net/gps");
     coordinates = await response.json();
     console.log(coordinates);
+    coordinates2=coordinates;
     
-  
+
     
     
+    
+
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
@@ -76,14 +80,12 @@ async function getGPS() {
 
     
     map.removeLayer(marker);
-    map.removeLayer(marker2);
     marker = L.marker(latlng, markerOptions).addTo(map);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
     coords_records.push(latlng);
     coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
     polyline2.setLatLngs(coords_records2);
-   
+}
 
 setInterval(getGPS, 2000);
-   }
