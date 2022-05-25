@@ -52,7 +52,8 @@ async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
     info = await response.json();
     console.log(info);
-   
+    
+
     document.getElementById("LatID").textContent = info.lat;
     document.getElementById("LongID").textContent = info.lon;
     document.getElementById("FechaID").textContent = info.date;
@@ -70,7 +71,7 @@ async function getGPS() {
         
 
       // Update HTML content.
-      if (info.carro === '1') {
+      if (info.carro === 'carro: 1') {
         document.getElementById("LatID").textContent = info.lat;
         document.getElementById("LongID").textContent = info.lon;
         document.getElementById("FechaID").textContent = info.date;
@@ -80,7 +81,7 @@ async function getGPS() {
         
         
       }
-      if (info.carro === '2') {
+      if (info.carro === 'carro: 2') {
         document.getElementById("LatID2").textContent = info.lat;
         document.getElementById("LongID2").textContent = info.lon;
         document.getElementById("FechaID2").textContent = info.date;
