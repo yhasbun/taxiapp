@@ -423,6 +423,26 @@
         <Option value = "opcion2" > Carro 2 </option>
         
         </Select>
+        <script>
+
+          const onclick = function(){
+            $('.alert').addClass("show");
+            $('.alert').removeClass("hide");
+            $('.alert').addClass("showAlert");
+            setTimeout(function(){
+              $('.alert').removeClass("show");
+              $('.alert').addClass("hide");
+            },5000);
+          }      
+          $('button').click(onclick);
+          onclick();
+    
+          const closeclick = function(){
+            $('.alert').removeClass("show");
+            $('.alert').addClass("hide");
+          }
+          $('.close-btn').click(closeclick);
+        </script>
       
 </div>
     </nav>
