@@ -96,7 +96,7 @@ async function getGPS() {
    
   }else if(nombredelmenu == 'opcion1'){
 
-    console.log("entro en carro 1");
+    console.log("entro en carro 1")
     if(coordinates.carro=='carro: 1'){
      
     document.getElementById("LatID").textContent = coordinates.lat;
@@ -109,6 +109,7 @@ async function getGPS() {
    
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
+    map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
@@ -120,7 +121,7 @@ async function getGPS() {
 
   }else if(nombredelmenu == 'opcion2'){
 
-    console.log("entro en carro 2");
+    console.log("entro en carro 2")
     if(coordinates.carro=='carro: 2'){
 
     document.getElementById("LatID").textContent = coordinates2.lat;
@@ -132,6 +133,7 @@ async function getGPS() {
    
     const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2);
+    map.removeLayer(marker2);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
     coords_records2.push(latlng2);
     polyline2.setLatLngs(coords_records2);
