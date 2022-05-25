@@ -50,8 +50,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
-    coordinates = await response.json();
-    console.log([parseFloat(info.lat), parseFloat(info.lon)]);  
+    info = await response.json();
+    console.log(info);
     coordinates2=coordinates;
     
 
