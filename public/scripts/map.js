@@ -1,7 +1,10 @@
+var socket = io();
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
-var jaja = 1;
-String
+var jaja = "1000";
+let prev_placa;
+let p1 = false;
+let p2 = false;
 // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
@@ -53,35 +56,53 @@ async function getGPS() {
     coordinates2=coordinates;
     
 
-    
-    
-    
-
     document.getElementById("LatID").textContent = coordinates.lat;
     document.getElementById("LongID").textContent = coordinates.lon;
     document.getElementById("FechaID").textContent = coordinates.date;
     document.getElementById("HoraID").textContent = coordinates.time;
     document.getElementById("RPMID").textContent = coordinates.rpm;
     document.getElementById("CARID").textContent = coordinates.carro;
-    jaja = parseInt(String(coordinates.carro).split(':')[1].trim())
-    
-  
-      
-    if(parseInt(String(coordinates.carro).split(':')[1].trim())==1){
 
-    const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-    map.setView(latlng);}
-  
-   
-    if(parseInt(String(coordinates.carro).split(':')[1].trim())==2){
+    latlng = [parseFloat(info.lat) , parseFloat(info.lon)];
+    latlng2 = [parseFloat(info.lat) , parseFloat(info.lon)];
 
-      const latlng2 = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
-      map.setView(latlng2);}
-
-    
-    map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
+    
+    socket.on('change', function(info) {
+        
+
+      // Update HTML content.
+      if (info.carro === '1') {
+        document.getElementById("LatID").textContent = info.lat;
+        document.getElementById("LongID").textContent = info.lon;
+        document.getElementById("FechaID").textContent = info.date;
+        document.getElementById("HoraID").textContent = info.time;
+        document.getElementById("RPMID").textContent = info.rpm;
+        document.getElementById("CARID").textContent = info.carro;
+      }
+      if (info.carro === '2') {
+        document.getElementById("LatID2").textContent = info.lat;
+        document.getElementById("LongID2").textContent = info.lon;
+        document.getElementById("FechaID2").textContent = info.date;
+        document.getElementById("HoraID2").textContent = info.time;
+        document.getElementById("RPMID2").textContent = info.rpm;
+        document.getElementById("CARID2").textContent = info.carro;
+      }
+
+      let placa = document.querySelector('').value; 
+
+      if (prev_placa === undefined && placa === '2') {
+        prev_placa = info.placa;
+        prev_lat = parseFloat(info.latitud_text);
+        prev_long = parseFloat(info.longitud_text);
+    }            
+
+    
+    });
+    
+    map.removeLayer(marker);
+    
     coords_records.push(latlng);
     coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
