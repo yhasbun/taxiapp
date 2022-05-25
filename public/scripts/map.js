@@ -51,7 +51,7 @@ async function getGPS() {
     console.log(coordinates);
     coordinates2=coordinates;
    
-   if(nombredelmenu == 'opcion 3'){
+   if(nombredelmenu == 'opcion3'){
 
    if(coordinates.carro=='carro: 1'){
 
@@ -89,7 +89,7 @@ async function getGPS() {
 
    }
    
-  }else if(nombredelmenu == 'opcion 2'){
+  }else if(nombredelmenu == 'opcion2'){
 
     if(coordinates.carro=='carro: 1'){
 
@@ -112,7 +112,7 @@ async function getGPS() {
   
     }
 
-  }else if(nombredelmenu == 'opcion 1'){
+  }else if(nombredelmenu == 'opcion1'){
 
     if(coordinates.carro=='carro: 2'){
 
