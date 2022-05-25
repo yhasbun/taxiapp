@@ -376,13 +376,6 @@
 <div class="nav-main_title" id="taxi" align-items="margin-right"> <h1>Taxi Location</h1> </div>
 <a href="/" class="logo"><img src="https://i.ibb.co/yRqhLHg/icon.jpg" id="logoimg" height="80px" /></a>
 
-<div class="alert hide">
-  <span class="fas fa-exclamation-circle"></span>
-  <span class="msg">Oprima el botón de menu para ingresar el rango de historicos.</span>
-   
-  <div class="close-btn">
-     <span class="fas fa-times"></span>
-  </div>
 </div>     
 
 <div class="nav-main_menu">
@@ -404,9 +397,9 @@
         <label class="inlineclass" style="width: 140px; padding-left: 10px;" for="finalhist">Fin:</label>
         <input class="inlineclass" style="text-align: center;" type="datetime-local" id="finalhist" onchange="changehist()" name="FinalHistoric" value="2022-03-30T10:00" min="2022-03-20T00:01" max="2023-04-01T00:00">
     
-       <div class="button" id="busbut">
-          <button class="centrado"onclick="enviarhist()">Buscar</button>
-        </div>
+       <div class="button">
+        <button class="centrado"onclick="enviarhist()">Buscar</button>
+       </div>
     
        <label >Posicion: 
         <div class="slider-wrapper">
@@ -415,33 +408,35 @@
       </label>
           </div>
       </div>
+      <Select name = "menuhistoricos" id = "menuhistoricos">
+        <Option value = "opcion0" selected = "selected"> </option>
 
-    <div class="btn_alert" id="btn_alert"> 
-      <button>Mostrar Alertas</button>
-    </div>
+        <Option value = "opcion1"> Carro 1  </option>
+        
+        <Option value = "opcion2" > Carro 2 </option>
+        
+        </Select>
+        <script>
+
+          const onclick = function(){
+            $('.alert').addClass("show");
+            $('.alert').removeClass("hide");
+            $('.alert').addClass("showAlert");
+            setTimeout(function(){
+              $('.alert').removeClass("show");
+              $('.alert').addClass("hide");
+            },5000);
+          }      
+          $('button').click(onclick);
+          onclick();
+    
+          const closeclick = function(){
+            $('.alert').removeClass("show");
+            $('.alert').addClass("hide");
+          }
+          $('.close-btn').click(closeclick);
+        </script>
       
-    <script>
-
-      const onclick = function(){
-        $('.alert').addClass("show");
-        $('.alert').removeClass("hide");
-        $('.alert').addClass("showAlert");
-        setTimeout(function(){
-          $('.alert').removeClass("show");
-          $('.alert').addClass("hide");
-        },5000);
-      }      
-      $('button').click(onclick);
-      onclick();
-
-      const closeclick = function(){
-        $('.alert').removeClass("show");
-        $('.alert').addClass("hide");
-      }
-      $('.close-btn').click(closeclick);
-    </script>
-      
-
 </div>
     </nav>
 
@@ -467,25 +462,39 @@
 
    
  <script>
-   
+  
    var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
    map.setZoom(13);
 
    let polyline = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
    let marker;
+   let polyline2 = L.polyline([], {color: '#41b611', smoothFactor:3}).addTo(map);
+   let marker2;
 
    async function enviarhist() {
+     
+     var nombredelmenu = document.querySelector('#nombredelmenu').value;
+       if ('#nombredelmenu' != null) {
+    nombredelmenu = querySelector('#nombredelmenu').value;
+    }
+    else {
+    nombredelmenu = null;
+     }
      datainicio = document.getElementById('inichist').value;
      datafin = document.getElementById('finalhist').value;
 
      map.removeLayer([polyline]);
+     map.removeLayer([polyline2]);
 
      if (marker !== undefined) {
          map.removeLayer(marker);
      };
+     if (marker2 !== undefined) {
+      map.removeLayer(marker);
+  };
 
      polyline.removeFrom(map);
-
+     polyline.removeFrom(map)
      const info = {
        fecha_inicio: datainicio.split('T')[0].replaceAll("-", "/"),
        hora_inicio: datainicio.split('T')[1],
@@ -508,6 +517,7 @@
      const data = await content.json();
      
      const latlngs = [];
+     const latlngs2 = [];
      const datetime = [];
      const rpm = [];
      const carro =[];
@@ -518,6 +528,9 @@
          datetime.push(`Fecha: ${info.fecha}<br/>Hora: ${info.hora}`);
          rpm.push(`RPM: ${info.rpm}`);
          carro.push(`carro: ${info.carro}`);  
+         carrito
+         if(parseInt(info.carro == 1)){latlngs.push([info.latitud, info.longitud]);}else{ if(info.carro ==2){latlngs2.push([info.latitud, info.longitud])}};
+         
        });
      }
 
@@ -527,11 +540,13 @@
      }).addTo(map);
 
      const coord = latlngs.reverse()[0];
+     const coord2 = latlngs.reverse()[0];
 
-     map.setView(coord);
-     polyline = L.polyline(latlngs, {color: '#41b611', smoothFactor:3}).addTo(map);
+
+     if(nombredelmenu == 'opcion1'){polyline = L.polyline(latlngs, {color: '#41b611', smoothFactor:3}).addTo(map);
+     
      marker = L.marker(coord).addTo(map);
-
+     
      let location = document.querySelector('#ubicacion');    
      location.setAttribute("max", latlngs.length - 1);
 
@@ -547,8 +562,34 @@
          map.setView(latlngs[index]);
          let info = `RPM: ${rpm}\ndatetime: ${datetime[index]}`
          marker = L.marker(latlngs[index]).addTo(map).bindPopup(info).openPopup();
-     });
-   }
+     });}else{if(nombredelmenu == 'opcion2'){
+
+      polyline2 = L.polyline(latlngs2, {color: '#41b611', smoothFactor:3}).addTo(map);
+     
+     marker2 = L.marker(coord2).addTo(map);
+     
+     let location = document.querySelector('#ubicacion');    
+     location.setAttribute("max", latlngs2.length - 1);
+
+     let index = 0;
+
+     location.addEventListener('change', () => {
+       
+         if (marker2 !== undefined) {
+             map.removeLayer(marker2);
+         };
+
+         index = location.value;
+         map.setView(latlngs2[index]);
+         let info = `RPM: ${rpm}\ndatetime: ${datetime[index]}`
+         marker2 = L.marker(latlngs2[index]).addTo(map).bindPopup(info).openPopup();
+     })};
+
+      
+    // map.setView(coord); ////
+     
+   }  
+    } /////
  </script>
 
 

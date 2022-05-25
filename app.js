@@ -120,13 +120,13 @@ server.listen(PORT, function () {
 
    socket.on('message', (message) => {
         console.log('message splited: ' + String(message).split('\n'))
-        const info = String(message).split('\n');
-        lat = info[0].split(':')[1].trim()
-        lon = info[1].split(':')[1].trim()
-        date = info[2].split(',')[0].trim()
-        time = info[2].split(',')[1].trim()
-        rpm = info[3].split(',')
-        carro = info[4].split(',')
+        const msg_values = String(message).split('\n');
+        lat = msg_values[0].split(':')[1].trim()
+        lon = msg_values[1].split(':')[1].trim()
+        date = msg_values[2].split(',')[0].trim()
+        time = msg_values[2].split(',')[1].trim()
+        rpm = msg_values[3].split(',')
+        carro = msg_values[4].split(',')
         
         coords = {
             lat: lat,
