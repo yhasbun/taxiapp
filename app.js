@@ -55,13 +55,13 @@ app.post('/historic', (req, res) => {
     FROM datos 
     WHERE 
     str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
-    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = '1'`);
+    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = 'carro: 1'`);
 
     let info2 =  database.getData(`SELECT * 
     FROM datos 
     WHERE 
     str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
-    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = '2'`);
+    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = 'carro: 1'`);
 
     var con = mysql.createConnection({
         host: process.env.DB_HOST,
