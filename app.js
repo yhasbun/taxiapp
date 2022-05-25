@@ -47,22 +47,26 @@ app.get("/logo2.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/logo2.png"));
 });
 
-app.post('/historic', (req, res) => {
-    console.log(req.body);
+app.post('/historic/:carro', (req, res) => {
+    console.log(req.body. req.params);
     const { fecha_inicio, hora_inicio, fecha_fin, hora_fin } = req.body;
-
-    const sql_query = `SELECT * 
-    FROM datos 
-    WHERE 
-    str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s',carro)
-    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro`
-
-    let info2 =  database.getData(`SELECT * 
-    FROM datos 
-    WHERE 
-    str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
-    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = 'carro: 2'`);
-
+    const carro = req.params.carro;
+    let sql_query = ""
+    if (carro === 'carro: 1') {
+        sql_query = `SELECT * 
+        FROM datos 
+        WHERE 
+        str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s',carro)
+        AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s') and carro = 'carro: 1'`
+    
+    } else if (carro === 'carro: 2') {
+        sql_query = `SELECT * 
+        FROM datos 
+        WHERE 
+        str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
+        AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s') and carro = 'carro: 2'`;
+    }
+ 
     var con = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
@@ -89,6 +93,7 @@ app.post('/historic', (req, res) => {
         con.end();
         res.json({data: info});
     });
+
 });
 
 server.listen(PORT, function () {

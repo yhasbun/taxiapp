@@ -502,8 +502,9 @@
        },
        body: JSON.stringify(info)
      };
+     var nombredelmenu = document.querySelector('#nombredelmenu').value;
 
-     const content = await fetch('/historic', options);
+     const content = await fetch(`/historic/${nombredelmenu}`, options);
      const data = await content.json();
      
      const latlngs = [];
