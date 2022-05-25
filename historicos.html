@@ -488,11 +488,13 @@
 
      polyline.removeFrom(map);
      polyline.removeFrom(map)
+     var nombredelmenu = document.querySelector('#menuhistoricos').value;
      const info = {
        fecha_inicio: datainicio.split('T')[0].replaceAll("-", "/"),
        hora_inicio: datainicio.split('T')[1],
        fecha_fin: datafin.split('T')[0].replaceAll("-", "/"),
-       hora_fin: datafin.split('T')[1]
+       hora_fin: datafin.split('T')[1],
+       carro: nombredelmenu
      };
 
      console.log(info);
@@ -504,9 +506,8 @@
        },
        body: JSON.stringify(info)
      };
-     var nombredelmenu = document.querySelector('#menuhistoricos').value;
      console.log(nombredelmenu);
-     const content = await fetch(`/historic/${nombredelmenu}`, options);
+     const content = await fetch(`/historic/`, options);
      const data = await content.json();
      
      const latlngs = [];

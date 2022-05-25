@@ -47,10 +47,10 @@ app.get("/logo2.png", function (req, res) {
     res.sendFile(path.join(__dirname + "/logo2.png"));
 });
 
-app.post('/historic/:carro', (req, res) => {
-    console.log(req.body. req.params);
+app.post('/historic', (req, res) => {
+    console.log(req.body);
     const { fecha_inicio, hora_inicio, fecha_fin, hora_fin } = req.body;
-    const carro = req.params.carro;
+    const carro = req.body.carro;
     let sql_query = ""
     if (carro === 'carro: 1') {
         sql_query = `SELECT * 
