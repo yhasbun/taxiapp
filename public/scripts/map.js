@@ -1,3 +1,4 @@
+var socket = io();
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 var jaja = "1000";
@@ -79,6 +80,11 @@ async function getGPS() {
         document.getElementById("HoraID").textContent = info.time;
         document.getElementById("RPMID").textContent = info.rpm;
         document.getElementById("CARID").textContent = info.carro;
+        coords_records.push(latlng);
+        polyline.setLatLngs(coords_records);
+        map.removeLayer(marker);
+        map.removeLayer(marke2);
+        
       }
       if (info.carro === '2') {
         document.getElementById("LatID2").textContent = info.lat;
@@ -87,25 +93,21 @@ async function getGPS() {
         document.getElementById("HoraID2").textContent = info.time;
         document.getElementById("RPMID2").textContent = info.rpm;
         document.getElementById("CARID2").textContent = info.carro;
+        coords_records2.push(latlng2);
+        polyline2.setLatLngs(coords_records2)
+        map.removeLayer(marker2);
+        map.removeLayer(marker);
       }
-
-      let placa = document.querySelector('').value; 
-
-      if (prev_placa === undefined && placa === '2') {
-        prev_placa = info.placa;
-        prev_lat = parseFloat(info.latitud_text);
-        prev_long = parseFloat(info.longitud_text);
-    }            
 
     
     });
     
     map.removeLayer(marker);
     
-    coords_records.push(latlng);
+   /*  coords_records.push(latlng);
     coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
-    polyline2.setLatLngs(coords_records2);
+    polyline2.setLatLngs(coords_records2); */
 }
 
 setInterval(getGPS, 2000);
