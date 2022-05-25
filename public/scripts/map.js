@@ -113,7 +113,7 @@ async function getGPS() {
     marker = L.marker(latlng, markerOptions).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
-    polyline2.removeFrom(map);
+    
     
     map.removeLayer(marker2);
   
