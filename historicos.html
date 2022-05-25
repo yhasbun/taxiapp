@@ -502,7 +502,7 @@
        },
        body: JSON.stringify(info)
      };
-     var nombredelmenu = document.querySelector('#nombredelmenu').value;
+     var nombredelmenu = document.querySelector('#menuhistoricos').value;
 
      const content = await fetch(`/historic/${nombredelmenu}`, options);
      const data = await content.json();
