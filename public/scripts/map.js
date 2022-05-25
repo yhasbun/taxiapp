@@ -94,7 +94,7 @@ async function getGPS() {
 
    }
    
-  }else if(nombredelmenu == 'opcion2'){
+  }else if(nombredelmenu == 'opcion1'){
 
     console.log("entro en carro 1");
     if(coordinates.carro=='carro: 1'){
@@ -109,16 +109,16 @@ async function getGPS() {
    
     const latlng = [parseFloat(coordinates.lat) , parseFloat(coordinates.lon)];
     map.setView(latlng);
-    map.removeLayer(marker);
     marker = L.marker(latlng, markerOptions).addTo(map);
     coords_records.push(latlng);
     polyline.setLatLngs(coords_records);
-    
+
+    polyline2.removeFrom(map);
     map.removeLayer(marker2);
   
     }
 
-  }else if(nombredelmenu == 'opcion1'){
+  }else if(nombredelmenu == 'opcion2'){
 
     console.log("entro en carro 2");
     if(coordinates.carro=='carro: 2'){
@@ -132,11 +132,11 @@ async function getGPS() {
    
     const latlng2 = [parseFloat(coordinates2.lat) , parseFloat(coordinates2.lon)];
     map.setView(latlng2);
-    map.removeLayer(marker2);
     marker2 = L.marker(latlng2,markerOptions2).addTo(map);
     coords_records2.push(latlng2);
     polyline2.setLatLngs(coords_records2);
 
+    polyline.removeFrom(map);
     map.removeLayer(marker1);
 
   }
