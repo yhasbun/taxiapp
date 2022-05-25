@@ -51,7 +51,7 @@ app.post('/historic', (req, res) => {
     console.log(req.body);
     const { fecha_inicio, hora_inicio, fecha_fin, hora_fin } = req.body;
 
-    let info =  database.getData(`SELECT * 
+    const sql_query = `SELECT * 
     FROM datos 
     WHERE 
     str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
