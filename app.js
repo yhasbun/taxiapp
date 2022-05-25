@@ -51,11 +51,17 @@ app.post('/historic', (req, res) => {
     console.log(req.body);
     const { fecha_inicio, hora_inicio, fecha_fin, hora_fin } = req.body;
 
-    const sql_query = `SELECT * 
+    let info = await database.getData(`SELECT * 
     FROM datos 
     WHERE 
     str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
-    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s');`
+    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = '1'`);
+
+    let info2 = await database.getData(`SELECT * 
+    FROM datos 
+    WHERE 
+    str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
+    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = '2'`);
 
     var con = mysql.createConnection({
         host: process.env.DB_HOST,
@@ -107,15 +113,15 @@ server.listen(PORT, function () {
 
     console.log('Sniffer on port', PORT_UDP);
 
-    socket.on('message', (message) => {
+   socket.on('message', (message) => {
         console.log('message splited: ' + String(message).split('\n'))
-        const msg_values = String(message).split('\n');
-        lat = msg_values[0].split(':')[1].trim()
-        lon = msg_values[1].split(':')[1].trim()
-        date = msg_values[2].split(',')[0].trim()
-        time = msg_values[2].split(',')[1].trim()
-        rpm = msg_values[3].split(',')
-        carro = msg_values[4].split(',')
+        const info = String(message).split('\n');
+        lat = info[0].split(':')[1].trim()
+        lon = info[1].split(':')[1].trim()
+        date = info[2].split(',')[0].trim()
+        time = info[2].split(',')[1].trim()
+        rpm = info[3].split(',')
+        carro = info[4].split(',')
         
         coords = {
             lat: lat,
