@@ -509,12 +509,14 @@
      const latlngs = [];
      const datetime = [];
      const rpm = [];
+     const carro =[];
 
      if (data.data.length !== 0) {
        data.data.map(info => {
          latlngs.push([info.latitud, info.longitud]);
          datetime.push(`Fecha: ${info.fecha}<br/>Hora: ${info.hora}`);
          rpm.push(`RPM: ${info.rpm}`);
+         carro.push(`carro: ${info.carro}`);  
        });
      }
 
