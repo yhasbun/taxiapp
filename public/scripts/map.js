@@ -1,6 +1,8 @@
 var map = L.map('MapID').setView({ lat: 11.008, lng: -74.809 });
 map.setZoom(15);
 var jaja = "1000";
+
+
 // Icon options
 var iconOptions = {
   iconUrl: 'logo1.png',
@@ -46,6 +48,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 async function getGPS() {
+    var nombredelmenu = document.querySelector('#nombredelmenu').value;
+    console.log(nombredelmenu)
     response = await fetch("/gps");
     coordinates = await response.json();
     console.log(coordinates);
@@ -115,7 +119,7 @@ async function getGPS() {
     }
 
   }else if(nombredelmenu == 'opcion1'){
-    
+
     console.log("entro en carro 2");
     if(coordinates.carro=='carro: 2'){
 
