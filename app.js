@@ -54,8 +54,8 @@ app.post('/historic', (req, res) => {
     const sql_query = `SELECT * 
     FROM datos 
     WHERE 
-    str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
-    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro = 'carro: 1'`);
+    str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s',carro)
+    AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s')and carro`);
 
     let info2 =  database.getData(`SELECT * 
     FROM datos 
