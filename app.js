@@ -53,17 +53,11 @@ app.post('/historic', (req, res) => {
     const carro = req.body.carro;
     let sql_query = ""
     if (carro === 'opcion1') {
-        sql_query = `SELECT * 
-        FROM datos 
-        WHERE 
-        str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s',carro)
+        sql_query = `SELECT * FROM datos WHERE str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s',carro)
         AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s') and carro = 'carro: 1'`
     
     } else if (carro === 'opcion2') {
-        sql_query = `SELECT * 
-        FROM datos 
-        WHERE 
-        str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
+        sql_query = `SELECT * FROM datos WHERE str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') >= str_to_date(concat('${fecha_inicio}', 'T', '${hora_inicio}'),'%Y/%m/%dT%H:%i:%s')
         AND str_to_date(concat(fecha, 'T', hora), '%Y/%m/%dT%H:%i:%s') <= str_to_date(concat('${fecha_fin}', 'T', '${hora_fin}'),'%Y/%m/%dT%H:%i:%s') and carro = 'carro: 2'`;
     }
  
