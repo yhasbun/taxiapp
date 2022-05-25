@@ -94,7 +94,7 @@ async function getGPS() {
 
    }
    
-  }else if(nombredelmenu == 'opcion2'){
+  }else if(nombredelmenu == 'opcion1'){
 
     console.log("entro en carro 1");
     if(coordinates.carro=='carro: 1'){
@@ -119,7 +119,7 @@ async function getGPS() {
   
     }
 
-  }else if(nombredelmenu == 'opcion1'){
+  }else if(nombredelmenu == 'opcion2'){
 
     console.log("entro en carro 2");
     if(coordinates.carro=='carro: 2'){
@@ -139,7 +139,7 @@ async function getGPS() {
     polyline2.setLatLngs(coords_records2);
     polyline.removeFrom(map);
 
-    map.removeLayer(marker1);
+    map.removeLayer(marker);
 
   }
 
