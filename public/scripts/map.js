@@ -14,7 +14,7 @@ var customIcon = L.icon(iconOptions);
 
 // Creating Marker Options
 var markerOptions = {
-  title: "MyLocation",
+  title: "Carro 1",
   clickable: true,
   icon: customIcon
 }
@@ -51,16 +51,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 async function getGPS() {
     response = await fetch("http://taxilocationafb.ddns.net/gps");
     coordinates = await response.json();
-    console.log(coordinates);
+    console.log(info);
     coordinates2=coordinates;
     
 
-    document.getElementById("LatID").textContent = coordinates.lat;
-    document.getElementById("LongID").textContent = coordinates.lon;
-    document.getElementById("FechaID").textContent = coordinates.date;
-    document.getElementById("HoraID").textContent = coordinates.time;
-    document.getElementById("RPMID").textContent = coordinates.rpm;
-    document.getElementById("CARID").textContent = coordinates.carro;
+    document.getElementById("LatID").textContent = info.lat;
+    document.getElementById("LongID").textContent = info.lon;
+    document.getElementById("FechaID").textContent = info.date;
+    document.getElementById("HoraID").textContent = info.time;
+    document.getElementById("RPMID").textContent = info.rpm;
+    document.getElementById("CARID").textContent = info.carro;
 
     latlng = [parseFloat(info.lat) , parseFloat(info.lon)];
     latlng2 = [parseFloat(info.lat) , parseFloat(info.lon)];
@@ -79,10 +79,7 @@ async function getGPS() {
         document.getElementById("HoraID").textContent = info.time;
         document.getElementById("RPMID").textContent = info.rpm;
         document.getElementById("CARID").textContent = info.carro;
-        coords_records.push(latlng);
-        polyline.setLatLngs(coords_records);
-        map.removeLayer(marker);
-        map.removeLayer(marke2);
+        
         
       }
       if (info.carro === '2') {
@@ -92,10 +89,7 @@ async function getGPS() {
         document.getElementById("HoraID2").textContent = info.time;
         document.getElementById("RPMID2").textContent = info.rpm;
         document.getElementById("CARID2").textContent = info.carro;
-        coords_records2.push(latlng2);
-        polyline2.setLatLngs(coords_records2)
-        map.removeLayer(marker2);
-        map.removeLayer(marker);
+        
       }
 
     
@@ -103,10 +97,10 @@ async function getGPS() {
     
     map.removeLayer(marker);
     
-   /*  coords_records.push(latlng);
+    coords_records.push(latlng);
     coords_records2.push(latlng2);
     polyline.setLatLngs(coords_records);
-    polyline2.setLatLngs(coords_records2); */
+    polyline2.setLatLngs(coords_records2);
 }
 
 setInterval(getGPS, 2000);
