@@ -86,6 +86,7 @@ app.post('/historic', (req, res) => {
 
     con.query(sql_query, (err, info) => {
         if (err) {
+            console.log(err)
             console.log("No se pudo ejecutar el query.");
             return;
         }
